@@ -35,7 +35,4 @@ Tourmii::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  # Allows for Sprockets to locate ember's assets
-  config.ember.variant = :development
-
 end

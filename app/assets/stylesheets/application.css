@@ -9,5 +9,6 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+ *= require 'foundation4/css/foundation.min.css'
+ *= require 'jquery_mobile/jquery-mobile-1.3.1.css'
  */
