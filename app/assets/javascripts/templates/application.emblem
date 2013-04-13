@@ -1,0 +1,17 @@
+.row
+  .small-3.columns
+  .small-6.small-centered.column style='margin:0 auto;'
+    h1.subheader.small-centered style='text-align:center;' tourmii
+  .small-3.columns
+.row
+  .small-1.columns
+  .small-10.columns.small-centered
+    linkTo 'home' class='button tiny secondary'       | home
+    linkTo 'search' class='button tiny secondary'     | search
+    linkTo 'tours' class='button tiny secondary'      | my tours
+    linkTo 'createtour' class='button tiny secondary' | create tour
+  .small-1.columns
+.row
+  .small-1.columns
+  .small-11.columns
+    outlet

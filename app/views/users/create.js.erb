@@ -1,0 +1,4 @@
+<% if @user.id? %>
+  // $('#menu').empty().append("<%=j render :partial=>'menus/usermenu' %>");
+  $('#login_form').empty().append("<%=j render :partial=>'home/form' %>");
+<% end %>

@@ -12,7 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require 'underscore-1.4.4/underscore.min.js'
-//= require 'jquery-ui-1.10.2/ui/jquery-ui.js'
-//= require 'jquery_mobile/jquery-mobile-1.3.1.min.js'
+//= require 'underscore-1.4.4/underscore.js'
+//= require 'sugar/sugar-1.3.9.min.js'
+//= require 'moment-2.0.0/moment.js'
+//= require 'handlebars/handlebars.js'
+//= require 'foundation4/js/vendor/custom.modernizr.js'
 //= require 'foundation4/js/foundation.min.js'
+//= require 'tourmii'
+
+
+

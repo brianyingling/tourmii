@@ -1,0 +1,15 @@
+- if @auth.nil?
+  .row
+    .small-2.columns
+    .small-8.small-centered.columns
+      = render :partial=>'shared/errors', :locals=> {:object=>@user}
+      %fieldset
+        %h3.subheader Sign Up
+        = form_for @user, :remote=>true do |f|
+          = f.text_field  :first_name, :placeholder=>'first name'
+          = f.text_field  :last_name, :placeholder=>'last name'
+          = f.text_field  :email, :placeholder=>'email'
+          = f.password_field  :password, :placeholder=>'password'
+          = f.password_field  :password_confirmation, :placeholder=>'confirm password'
+          = f.submit 'register', :class=>'button tiny secondary'
+    .small-2.columns

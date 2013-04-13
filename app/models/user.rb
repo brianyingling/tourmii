@@ -15,7 +15,9 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :email, :password_digest, :lat, :lng, :address
+  attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :lat, :lng, :address
+  has_secure_password
+  validates :email, :presence=>true, :uniqueness=>true
   has_many :tours
   has_many :orders
 end

@@ -1,0 +1,6 @@
+.small-12.columns.small-centered{:style=>'text-align:center'}
+  = link_to 'home', nil, :class=>'button tiny secondary'
+  = link_to 'search', search_new_path, :class=>'button tiny secondary', :remote=>true
+  = link_to 'tours', nil, :class=>'button tiny secondary'
+  = link_to 'createtour', nil, :class=>'button tiny secondary'
+  = link_to "logout", '/login', :method=>'delete', :class=>'button tiny secondary'

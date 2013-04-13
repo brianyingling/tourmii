@@ -1,0 +1,7 @@
+
+<% if @auth.present? %>
+  $('#menu').empty().append("<%=j render 'menus/usermenu' %>");
+  $('#page1').slideUp();
+  console.log('this should read this.')
+  $('#page2').append('This is going to appear here.');
+<% end %>

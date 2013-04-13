@@ -1,0 +1,6 @@
+.row
+  .small-1.columns
+  .small-8.columns
+    Ember.TextField.valueBinding='Search' placeholder='search'
+    button style='inline-block;' Go
+  .small-1.columns
