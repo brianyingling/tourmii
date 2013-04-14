@@ -12,12 +12,6 @@ window.search =
     $('body').on('click','#search_nav_btn', search.get_location)
     $('body').on('click', '#search_btn', search.display_map)
 
-  initialize: ->
-    console.log('initializing')
-    search.get_location
-    search.display_map
-
-
   display_map: ->
     $('#map').show();
     canvas = $('#map')[0]
@@ -31,9 +25,22 @@ window.search =
     request =
       location: latlng
       radius: 5000
-      query: 'pizza'
+      query: $('#search').val().split(' ').join('+')
     service = new google.maps.places.PlacesService(map)
     service.textSearch(request, search.callback)
+
+  # sets the boundaries of the map to include
+  # all selected
+  set_bounds: ->
+    console.log('setting bounds...')
+    bounds = new google.maps.LatLngBounds();
+    i = 0
+    while i < window.markers.length
+      latlng = new google.maps.LatLng(window.markers[i].position.lat(),window.markers[i].position.lng() )
+      bounds.extend(latlng)
+      i++
+    window.map.fitBounds(bounds)
+    window.map.setCenter(bounds.getCenter() )
 
   callback: (results, status) ->
     console.log('callback')
@@ -49,10 +56,10 @@ window.search =
     marker = new google.maps.Marker(
       position: result.geometry.location
       title: result.name
-      # icon: 'http://www.yohman.com/students/yoh/week4/images/school.png'
     )
     marker.setMap(map)
     markers.push(marker)
+    search.set_bounds()
 
   build_query_string: (keyword) ->
     url = "https://maps.googleapis.com/maps/api/place/textsearch"
@@ -87,13 +94,6 @@ window.search =
       when error.POSITION_UNAVAILABLE then alert('Could not detect current position')
       when error.TIMEOUT then alert('Timeout occurred')
       else alert('Error unknown')
-
-
-
-
-
-
-
 
 
 $(document).ready(search.ready)
