@@ -12,6 +12,10 @@ window.search =
     $('body').on('click','#search_nav_btn', search.get_location)
     $('body').on('click', '#search_btn', search.display_map)
 
+  initialize: ->
+    console.log('initializing')
+    search.get_location
+    search.display_map
 
 
   display_map: ->
@@ -28,7 +32,6 @@ window.search =
       location: latlng
       radius: 5000
       query: 'pizza'
-    debugger
     service = new google.maps.places.PlacesService(map)
     service.textSearch(request, search.callback)
 
@@ -43,11 +46,11 @@ window.search =
 
   createMarker: (result)->
     console.log('create marker')
-    marker = new google.maps.Marker ->
+    marker = new google.maps.Marker(
       position: result.geometry.location
-      map: map
       title: result.name
-      icon: 'http://www.yohman.com/students/yoh/week4/images/school.png'
+      # icon: 'http://www.yohman.com/students/yoh/week4/images/school.png'
+    )
     marker.setMap(map)
     markers.push(marker)
 
