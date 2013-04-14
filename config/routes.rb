@@ -3,7 +3,7 @@ Tourmii::Application.routes.draw do
   resources :users
 
   get '/search/new'   => 'searches#new'
-  get 'search/query'  => 'search#query'
+  get 'search/query'  => 'searches#query'
 
   get '/login'        => 'session#new'
   post '/login'       => 'session#create'

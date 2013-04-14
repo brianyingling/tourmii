@@ -1,10 +1,16 @@
 .row
-  = form_tag search_query_path do
-    .small-2.columns &nbsp;
-    .small-6.columns.small-centered
+  = form_tag search_query_path, :method=>'get', :remote=>true do
+    .small-8.columns.small-centered
       .row
         .small-10.columns
           = text_field_tag  "search", nil, :placeholder=>'search'
         .small-2.columns
-          = link_to 'Go', nil, :class=>'button tiny secondary'
+          = button_to 'Go', nil, :class=>'button tiny secondary', :id=>'search_btn'
     .small-4.columns
+.row
+  #results
+    .small-1.columns
+    .small-9.small-centered.columns
+      #map
+        hello
+    .small-2.columns &nbsp;

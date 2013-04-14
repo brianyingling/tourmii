@@ -3,6 +3,5 @@ class SearchesController < ApplicationController
   end
 
   def query
-    binding.pry
   end
 end
