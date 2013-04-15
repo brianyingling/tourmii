@@ -2,6 +2,8 @@ window.markers = []
 window.map = ''
 window.infowindow = ''
 window.places = []
+window.detailedResponses = {}
+window.service = ''
 
 window.search =
   lat: 0
@@ -35,8 +37,17 @@ window.search =
       location: latlng
       radius: 5000
       query: $('#search').val().split(' ').join('+')
-    service = new google.maps.places.PlacesService(map)
-    service.textSearch(request, search.callback)
+    window.service = new google.maps.places.PlacesService(map)
+    window.service.textSearch(request, search.callback)
+    debugger
+    window.service.getDetails({reference: request.reference}, search.detailed_callback)
+
+  detailed_callback: (place, status) ->
+    if status == google.maps.places.PlacesServiceStatus.OK
+      console.log(place)
+    else
+      console.log(status)
+
 
   callback: (results, status) ->
     console.log('callback')
@@ -61,17 +72,51 @@ window.search =
     window.map.fitBounds(bounds)
     window.map.setCenter(bounds.getCenter() )
 
+  get_place_details: (result) ->
+    console.log('get place details...')
+    query = "https://maps.googleapis.com/maps/api/place/details"
+    query += '/json'
+    query += '?reference='+result.reference
+    query += '&sensor=true'
+    query += "&key=#{search.key}"
+    jsonObj = {}
+
+
+
+    # make ajax call
+    $.ajax(
+      dataType: 'json'
+      type: 'get'
+      url: query
+      ).done( (data)->
+        console.log(data.results.length)
+        window.detailedResponses = data
+      )
+    return jsonObj
+
   set_infowindow: (result, marker)->
+    console.log('setting infowindow')
     window.infowindow = new google.maps.InfoWindow(
       content: "#{result.name} #{result.formatted_address}"
     )
-    content = "<div class='infowindow'>"
+    content =  "<div class='infowindow'>"
     content += "<div id='place_name'>#{result.name}</div>"
     content += "<div id='place_address'>#{result.formatted_address}</div>"
-    content +="</div>"
+    content += "</div>"
     google.maps.event.addListener marker, 'click', ->
+      console.log('setting event...')
+      search.get_place_details(result)
       window.infowindow.setContent(content)
       window.infowindow.open(window.map, marker)
+
+  # get_place_details: (result) ->
+  #   console.log('get place details...')
+  #   query = "https://maps.googlemaps.com/api/place/details"+
+  #   query += '/json'
+  #   query += '?reference='+result.reference
+  #   query += '&sensor=true'
+  #   query += "&key=#{search.key}"
+
 
 
   createMarker: (result)->
