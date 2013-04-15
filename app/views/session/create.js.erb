@@ -1,7 +1,8 @@
-
 <% if @auth.present? %>
   $('#menu').empty().append("<%=j render 'menus/usermenu' %>");
   $('#login_form').slideUp();
   console.log('this should read this.')
   $('#page1').empty().append('This is going to appear here.');
+<% else %>
+  $('#page1').empty().append("<%=j render :partial=>'home/form' %> ")
 <% end %>

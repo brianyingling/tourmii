@@ -10,11 +10,14 @@
   #menu
     - if @auth.present?
       = render :partial=>'menus/usermenu'
-    -else
+    - else
       = render :partial=>'menus/loginmenu'
 .row
   #page1
-    = render :partial=>'home/form'
+    - if @auth.present?
+      = render :partial=>'searches/index'
+    - else
+      = render :partial=>'home/form'
 
 
 / .row

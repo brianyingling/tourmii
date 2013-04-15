@@ -1,6 +1,7 @@
 .row
   .small-2.columns
   .small-8.small-centered.columns
+    %div= flash[:notice] if flash[:notice].present?
     = form_tag '/login', :remote=>true do
       %fieldset
         = text_field_tag      :email, nil, :placeholder=>'Email'
