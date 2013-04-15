@@ -12,6 +12,11 @@ window.search =
     console.log('ready')
     $('body').on('click','#search_nav_btn', search.get_location)
     $('body').on('click', '#search_btn', search.display_map)
+    $('body').on('click', '.infowindow', search.click_content)
+
+  click_content: ->
+    console.log('clicking content...')
+    alert $(this).html()
 
   display_map: ->
     $('#map').show();
@@ -35,7 +40,7 @@ window.search =
       i = 0
       while i < results.length
         place = results[i]
-        search.createMarker results[i]
+        search.createMarker(results[i])
         i++
 
   # sets the boundaries of the map to include
@@ -53,10 +58,12 @@ window.search =
 
   set_infowindow: (result, marker)->
     window.infowindow = new google.maps.InfoWindow(
-      content: result.name
+      content: "#{result.name} #{result.formatted_address}"
     )
+    content = "<div id=#{result.name} class='infowindow'>"
+    content +="#{result.name} #{result.formatted_address}</div>"
     google.maps.event.addListener marker, 'click', ->
-      window.infowindow.setContent("#{result.name} #{result.formatted_address}")
+      window.infowindow.setContent(content)
       window.infowindow.open(window.map, marker)
 
 
