@@ -21,6 +21,7 @@
 //= require 'foundation4/js/foundation.min.js'
 //= require 'tourmii'
 //= require 'search.js'
+//= require 'tour.js'
 
 
 

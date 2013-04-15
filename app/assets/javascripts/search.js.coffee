@@ -1,6 +1,7 @@
 window.markers = []
 window.map = ''
 window.infowindow = ''
+window.places = []
 
 window.search =
   lat: 0
@@ -16,10 +17,12 @@ window.search =
 
   click_content: ->
     console.log('clicking content...')
-    alert $(this).html()
+    content = $(this).clone()
+    $('#tour_form_container').append(content)
 
   display_map: ->
     $('#map').show();
+    $('#create_tour_form').show()
     canvas = $('#map')[0]
     latlng = new google.maps.LatLng(search.lat,search.lng)
     bounds = new google.maps.LatLngBounds()
@@ -39,7 +42,8 @@ window.search =
     if status == google.maps.places.PlacesServiceStatus.OK
       i = 0
       while i < results.length
-        place = results[i]
+        places.push(results[i])
+        # place = results[i]
         search.createMarker(results[i])
         i++
 
@@ -60,8 +64,10 @@ window.search =
     window.infowindow = new google.maps.InfoWindow(
       content: "#{result.name} #{result.formatted_address}"
     )
-    content = "<div id=#{result.name} class='infowindow'>"
-    content +="#{result.name} #{result.formatted_address}</div>"
+    content = "<div class='infowindow'>"
+    content += "<div id='place_name'>#{result.name}</div>"
+    content += "<div id='place_address'>#{result.formatted_address}</div>"
+    content +="</div>"
     google.maps.event.addListener marker, 'click', ->
       window.infowindow.setContent(content)
       window.infowindow.open(window.map, marker)

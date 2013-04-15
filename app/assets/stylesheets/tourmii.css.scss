@@ -4,6 +4,15 @@
     font-style: italic;
     font-weight: bold;
   }
+  #create_tour_form {
+    display: none;
+  }
+  #tour_form_container {
+    padding: 10px;
+    margin: 10px;
+  }
+
+
 
 }
 
@@ -18,3 +27,13 @@
   background-color: #ececec;
   display: none;
 }
+
+.infowindow {
+  background-color: lightblue;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+
+  overflow: hidden;
+}
+
