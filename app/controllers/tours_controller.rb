@@ -12,6 +12,7 @@ class ToursController < ApplicationController
         step = Step.new
         step.name = params[:tour][num.to_s][:name]
         step.address = params[:tour][num.to_s][:address]
+        step.position = num
         step.save
         @tour.steps << step
       end
