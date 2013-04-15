@@ -1,5 +1,6 @@
 window.markers = []
 window.map = ''
+window.infowindow = ''
 
 window.search =
   lat: 0
@@ -19,7 +20,6 @@ window.search =
     bounds = new google.maps.LatLngBounds()
     mapOptions =
       center: latlng
-      zoom: 13
       mapTypeId: google.maps.MapTypeId.ROADMAP
     window.map = new google.maps.Map(canvas, mapOptions)
     request =
@@ -28,6 +28,15 @@ window.search =
       query: $('#search').val().split(' ').join('+')
     service = new google.maps.places.PlacesService(map)
     service.textSearch(request, search.callback)
+
+  callback: (results, status) ->
+    console.log('callback')
+    if status == google.maps.places.PlacesServiceStatus.OK
+      i = 0
+      while i < results.length
+        place = results[i]
+        search.createMarker results[i]
+        i++
 
   # sets the boundaries of the map to include
   # all selected
@@ -42,14 +51,14 @@ window.search =
     window.map.fitBounds(bounds)
     window.map.setCenter(bounds.getCenter() )
 
-  callback: (results, status) ->
-    console.log('callback')
-    if status == google.maps.places.PlacesServiceStatus.OK
-      i = 0
-      while i < results.length
-        place = results[i]
-        search.createMarker results[i]
-        i++
+  set_infowindow: (result, marker)->
+    window.infowindow = new google.maps.InfoWindow(
+      content: result.name
+    )
+    google.maps.event.addListener marker, 'click', ->
+      window.infowindow.setContent(result.name)
+      window.infowindow.open(window.map, marker)
+
 
   createMarker: (result)->
     console.log('create marker')
@@ -60,6 +69,10 @@ window.search =
     marker.setMap(map)
     markers.push(marker)
     search.set_bounds()
+    search.set_infowindow(result, marker)
+
+
+
 
   build_query_string: (keyword) ->
     url = "https://maps.googleapis.com/maps/api/place/textsearch"
