@@ -28,6 +28,7 @@ window.search =
     bounds = new google.maps.LatLngBounds()
     mapOptions =
       center: latlng
+      zoom: 13
       mapTypeId: google.maps.MapTypeId.ROADMAP
     window.map = new google.maps.Map(canvas, mapOptions)
     request =

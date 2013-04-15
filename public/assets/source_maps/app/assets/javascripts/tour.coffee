@@ -29,7 +29,7 @@ window.tour =
       i++
 
     $.ajax(
-      dataType: 'json'
+      dataType: 'script'
       type: 'post'
       url: '/tours/'
       data: {tour: tour}
