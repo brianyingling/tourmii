@@ -56,7 +56,7 @@ window.search =
       content: result.name
     )
     google.maps.event.addListener marker, 'click', ->
-      window.infowindow.setContent(result.name)
+      window.infowindow.setContent("#{result.name} #{result.formatted_address}")
       window.infowindow.open(window.map, marker)
 
 
