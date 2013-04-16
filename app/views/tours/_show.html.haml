@@ -1,0 +1,4 @@
+%h1= @tour.name
+- @tour.steps.each do |step|
+  %div= step.name
+  %div= step.address

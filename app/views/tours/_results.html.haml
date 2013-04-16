@@ -4,5 +4,5 @@
     %td description
   - @tours.each do |tour|
     %tr
-      %td= link_to tour.name, tour
+      %td= link_to tour.name, tour, :remote=>true
       %td= tour.description

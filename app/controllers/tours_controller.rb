@@ -25,5 +25,6 @@ class ToursController < ApplicationController
     @auth.tours << @tour
   end
   def show
+    @tour = Tour.find(params[:id])
   end
 end
