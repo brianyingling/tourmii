@@ -9,7 +9,7 @@ class Tour < ActiveRecord::Base
   private
   def set_coords
     if self.steps.first.present?
-      result = Geocoder.search(self.steps.first.address)
+      result = Geocoder.search(self.steps.first.address).first
       if result.present?
         self.lat = result.latitude
         self.lng = result.longitude

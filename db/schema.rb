@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130415192207) do
+ActiveRecord::Schema.define(:version => 20130416020459) do
 
   create_table "orders", :force => true do |t|
     t.integer  "tour_id"
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(:version => 20130415192207) do
     t.string   "name"
     t.text     "description"
     t.string   "address"
-    t.integer  "lat"
-    t.integer  "lng"
+    t.float    "lat"
+    t.float    "lng"
     t.string   "audiofile"
     t.integer  "tour_id"
     t.datetime "created_at",  :null => false
