@@ -1,4 +1,8 @@
 class ToursController < ApplicationController
+  def index
+    @tours = @auth.tours.all
+  end
+
   def new
     @tour = Tour.new
   end
