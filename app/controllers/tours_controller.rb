@@ -16,7 +16,6 @@ class ToursController < ApplicationController
         step = Step.new
         step.name = params[:tour][num.to_s][:name]
         step.address = params[:tour][num.to_s][:address]
-        binding.pry
         step.position = num
         step.save
         @tour.steps << step
@@ -27,5 +26,6 @@ class ToursController < ApplicationController
   end
   def show
     @tour = Tour.find(params[:id])
+    @steps = @tour.steps
   end
 end

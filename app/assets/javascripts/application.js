@@ -22,6 +22,7 @@
 //= require 'tourmii'
 //= require 'search.js'
 //= require 'tour.js'
+//= require 'showtour.js'
 
 
 

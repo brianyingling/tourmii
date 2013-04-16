@@ -5,6 +5,15 @@ class Tour < ActiveRecord::Base
   belongs_to :user
   before_save :set_coords
 
+  # returns the average of the latitude coords for all steps
+  def get_average_lat
+    (self.steps.map(&:lat).reduce(:+)) / steps.count
+  end
+
+  #  returns the average of the longitude coords for all steps
+  def get_average_lng
+    (self.steps.map(&:lng).reduce(:+)) / steps.count
+  end
 
   private
   def set_coords

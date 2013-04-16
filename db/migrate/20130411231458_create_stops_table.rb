@@ -4,8 +4,8 @@ class CreateStopsTable < ActiveRecord::Migration
       t.string              :name
       t.text                :description
       t.string              :address
-      t.integer             :lat
-      t.integer             :lng
+      t.float               :lat
+      t.float               :lng
       t.string              :audiofile
       t.integer             :position
       t.integer             :tour_id

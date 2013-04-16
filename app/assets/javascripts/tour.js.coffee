@@ -1,6 +1,26 @@
 window.tour =
   ready: ->
+    console.log('tour.ready')
     $('body').on('click','#save_tour_btn',tour.save)
+    $('body').on('click', '.step_edit_btn', tour.edit_step)
+    $('body').on('load', '#tourmap', tour.show_tourmap)
+
+
+  show_tourmap: ->
+    console.log('showing tour map...')
+
+  edit_step: (e) ->
+    # e.preventDefault
+    console.log('editing step...')
+    td = $(this).parent().parent().find('td')
+    position = $(td).first().text()
+    _.each td, (r) ->
+      console.log(r)
+      if r != $(td).last()
+        value = $(r).text()
+        $(r).empty().append("<input type='text' value='#{value}'/>")
+    return false
+
 
   # makes an ajax call to the server to save all of the
   # steps as a tour object

@@ -16,6 +16,22 @@ window.search =
     $('body').on('click','#search_nav_btn', search.get_location)
     $('body').on('click', '#search_btn', search.display_map)
     $('body').on('click', '.infowindow', search.click_content)
+    $('body').on('click', '#reviews_link', search.show_reviews)
+    $('body').on('click', '#photos_link', search.show_photos)
+    $('body').on('click', '.cancel_btn', search.show_photos)
+
+  show_reviews:(e) ->
+    e.preventDefault
+    $('.review').toggle()
+    return false
+
+  show_photos: (e) ->
+    e.preventDefault
+    if $('#photo_list').css('display') == 'none'
+      $('#photo_list').css('display','inline-block')
+    else
+      $('#photo_list').css('display','none')
+    return false
 
   click_content: ->
     console.log('clicking content...')
@@ -39,12 +55,15 @@ window.search =
       query: $('#search').val().split(' ').join('+')
     window.service = new google.maps.places.PlacesService(map)
     window.service.textSearch(request, search.callback)
-    debugger
-    window.service.getDetails({reference: request.reference}, search.detailed_callback)
+    # window.service.getDetails({reference: request.reference}, search.detailed_callback)
 
   detailed_callback: (place, status) ->
     if status == google.maps.places.PlacesServiceStatus.OK
       console.log(place)
+      console.log(place.name)
+      console.log(place.formatted_address)
+      _.each place.reviews, (review) ->
+        console.log review.text
     else
       console.log(status)
 
@@ -90,7 +109,7 @@ window.search =
       url: query
       ).done( (data)->
         console.log(data.results.length)
-        window.detailedResponses = data
+        jsonObj = data
       )
     return jsonObj
 
@@ -99,24 +118,54 @@ window.search =
     window.infowindow = new google.maps.InfoWindow(
       content: "#{result.name} #{result.formatted_address}"
     )
-    content =  "<div class='infowindow'>"
-    content += "<div id='place_name'>#{result.name}</div>"
-    content += "<div id='place_address'>#{result.formatted_address}</div>"
-    content += "</div>"
+    content = search.build_infowindow_div(result)
     google.maps.event.addListener marker, 'click', ->
       console.log('setting event...')
-      search.get_place_details(result)
+      # search.get_place_details(result)
+      refObj =
+        reference: result.reference
+      # window.service.getDetails(refObj, search.detailed_callback)
+      window.service.getDetails refObj, (place, status) ->
+        if status == google.maps.places.PlacesServiceStatus.OK
+          console.log(place)
+          console.log(place.name)
+          console.log(place.formatted_address)
+          $('#details').empty().append(search.build_details_div(place) )
+        else
+          console.log(status)
+
       window.infowindow.setContent(content)
       window.infowindow.open(window.map, marker)
 
-  # get_place_details: (result) ->
-  #   console.log('get place details...')
-  #   query = "https://maps.googlemaps.com/api/place/details"+
-  #   query += '/json'
-  #   query += '?reference='+result.reference
-  #   query += '&sensor=true'
-  #   query += "&key=#{search.key}"
+  build_infowindow_div: (result)->
+    div   =  "<div id='#{result.name}' class='infowindow'>"
+    div   += "<div id='place_name'>#{result.name}</div>"
+    div   += "<div id='place_address'>#{result.formatted_address}</div>"
+    div   += "</div>"
+    return div
 
+  build_details_div: (place) ->
+    div =   "<div id='place_name'>#{place.name}</div>"
+    div +=  "<div id='place_address'>#{place.formatted_address}</div>"
+    div +=  "<div id='place_price_level'>Price Level: #{place.price_level}</div>"
+    div +=  "<div id='place_rating'>Rating: #{place.rating}</div>"
+
+    div += "<div id='reviews'><a href='' id='reviews_link'>Click for Reviews</a><br/>"
+    _.each place.reviews, (review) ->
+      div += "<div class='review'>"
+      div += "<div class='review_text'>#{review.text}</div>"
+      div += "<div class='review_author'>Reviewed by <a href='#{review.author_url}'>#{review.author_name}</a></div>"
+      div += "<div class='review_time'>Posted on #{Date(review.time)}</div>"
+      div += "</div></div>"
+
+    div += "<div id='photos' class='photos'><a href='' id='photos_link'>Click for Photos</a><br/>"
+    div += "<div id='photo_list'><a href='' class='cancel_btn'>x</a>"
+    _.each place.photos, (photo) ->
+      div += "<div class='photo'><img src='#{photo.getUrl({maxWidth:200,maxHeight:200})}'/></div>"
+    div += "</div></div>"
+
+    div += "</div>"
+    return div
 
 
   createMarker: (result)->

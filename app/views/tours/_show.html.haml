@@ -1,21 +1,32 @@
-%h1= @tour.name
-= link_to "Edit", nil, :class=>'button tiny secondary'
-= link_to "Delete", nil, :class=>'button tiny secondary', :confirm=>'Are you sure?'
-%table
-  %tr
-    %td step
-    %td name
-    %td address
-    %td lat
-    %td lng
-    %td
-  - @tour.steps.each do |step|
-    %tr
-      %td= step.position
-      %td= step.name
-      %td= step.address
-      %td= step.lat
-      %td= step.lng
-      %td
-        = link_to "Edit", edit_step_path(step.id), :class=>'button tiny secondary'
-        = link_to "Delete", step, :method=>'delete', :class=>'button tiny secondary'
+.row
+  .row
+    .small-6.columns
+      %h2.subheader= @tour.name
+      = link_to "Edit", nil, :class=>'button tiny secondary'
+      = link_to "Delete", nil, :class=>'button tiny secondary', :confirm=>'Are you sure?'
+    .small-6.columns
+
+.row
+  .small-8.columns
+    %table
+      %tr
+        %td step
+        %td name
+        %td address
+        %td
+      - @tour.steps.each do |step|
+        %tr
+          %td= step.position
+          %td
+            %div
+              = step.name
+            = link_to "Photos | ", nil, :style=>'display:inline-block;'
+            = link_to "Reviews", nil, :style=>'display:inline-block;'
+          %td= step.address
+          %td
+            = link_to "Edit", nil, :class=>'button tiny secondary step_edit_btn', :id=>"step_#{step.position}_edit_btn", :remote=>true
+            = link_to "Delete", step, :method=>'delete', :class=>'button tiny secondary', :confirm=>'Are you sure you want to delete this step?', :remote=>true
+  .small-4.columns
+    #tourmap
+
+

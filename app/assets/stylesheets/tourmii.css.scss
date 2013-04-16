@@ -21,12 +21,60 @@
 }
 
 #map {
-  position: absolute;
+  /*position: absolute;*/
   width: 100%;
   height: 300px;
   background-color: #ececec;
   display: none;
 }
+
+#details {
+
+}
+
+.cancel_btn {
+  border-radius: 100%;
+  background-color:red;
+  color:#fff;
+  position: relative;
+  right: 0;
+}
+
+
+
+#photo_list {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 50px;
+  width: 200px;
+  min-height: 200px;
+  background-color: #ccc;
+
+  a {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    right: 0;
+    border-radius: 100%;
+    color: white;
+    font-family: arial,helvetica,sans-serif;
+    font-weight: bold;
+    color: #fff;
+    background-color: red;
+  }
+
+  .photo {
+  border: 3px solid #000;
+  margin: 10px;
+  }
+
+}
+
+.review {
+  display: none;
+}
+
 
 .infowindow {
   background-color: tan;
@@ -36,4 +84,16 @@
 
   overflow: hidden;
 }
+
+
+#tourmap {
+  width: 400px;
+  height: 400px;
+  background-color: #eee;
+}
+
+.tour_link {
+}
+
+
 
