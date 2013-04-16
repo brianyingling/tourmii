@@ -2,11 +2,11 @@ class Step < ActiveRecord::Base
   attr_accessible :name, :description, :address, :lat, :lng, :audiofile, :position, :tour_id
   belongs_to :tour
   has_many :statuses
-  before_save :get_coords
+  before_save :set_coords
 
 
   private
-  def get_coords
+  def set_coords
     result = Geocoder.search(self.address).first
     if result.present?
       self.lat = result.latitude
