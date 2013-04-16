@@ -1,4 +1,21 @@
 %h1= @tour.name
-- @tour.steps.each do |step|
-  %div= step.name
-  %div= step.address
+= link_to "Edit", nil, :class=>'button tiny secondary'
+= link_to "Delete", nil, :class=>'button tiny secondary', :confirm=>'Are you sure?'
+%table
+  %tr
+    %td step
+    %td name
+    %td address
+    %td lat
+    %td lng
+    %td
+  - @tour.steps.each do |step|
+    %tr
+      %td= step.position
+      %td= step.name
+      %td= step.address
+      %td= step.lat
+      %td= step.lng
+      %td
+        = link_to "Edit", edit_step_path(step.id), :class=>'button tiny secondary'
+        = link_to "Delete", step, :method=>'delete', :class=>'button tiny secondary'
