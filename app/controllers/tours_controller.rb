@@ -7,6 +7,7 @@ class ToursController < ApplicationController
     @tour = Tour.new
   end
   def create
+    binding.pry
     @tour = Tour.new
     (0...params[:tour].length).to_a.each do |num|
       if num.to_s == '0'
@@ -16,6 +17,7 @@ class ToursController < ApplicationController
         step = Step.new
         step.name = params[:tour][num.to_s][:name]
         step.address = params[:tour][num.to_s][:address]
+        step.reference = params[:tour][num.to_s][:reference]
         step.position = num
         step.save
         @tour.steps << step

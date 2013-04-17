@@ -1,5 +1,5 @@
 class Step < ActiveRecord::Base
-  attr_accessible :name, :description, :address, :lat, :lng, :audiofile, :position, :tour_id
+  attr_accessible :name, :description, :address, :lat, :lng, :reference, :audiofile, :position, :tour_id
   belongs_to :tour
   has_many :statuses
   before_save :set_coords

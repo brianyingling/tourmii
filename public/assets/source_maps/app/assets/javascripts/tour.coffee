@@ -30,21 +30,25 @@ window.tour =
     authenticity_token = $("input[name='authenticity_token']").val()
     tour = []
     i = 0
+    # name description of just the Tour
     tour_data =
       name: $('#tourdata_name').val()
       description: $('#tourdata_description').val()
 
     tour.push(tour_data)
+    # other info from each step joining the Tour
     while i < $('#tour_form_container').children().length
       # get the basic data from each step
       data = $( $('#tour_form_container').children()[i] )
       data = $(data)[0]
       name = $(data.children[0]).text()
       address = $(data.children[1]).text()
+      reference = $(data.children[2]).val()
       step =
         number: i+1
         name: name
         address: address
+        reference: reference
       tour.push(step)
       i++
 

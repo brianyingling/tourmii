@@ -4,11 +4,13 @@ window.infowindow = ''
 window.places = []
 window.detailedResponses = {}
 window.service = ''
+window.reference_count = 0
 
 window.search =
   lat: 0
   lng: 0
   key: 'AIzaSyCvzuNHRQq5SRJZnyqPJ6c5nMzyeDm2kU0'
+  reference_count: 0
   url: ''
   map: ''
   ready: ->
@@ -141,7 +143,9 @@ window.search =
     div   =  "<div id='#{result.name}' class='infowindow'>"
     div   += "<div id='place_name'>#{result.name}</div>"
     div   += "<div id='place_address'>#{result.formatted_address}</div>"
+    div   += "<input type='hidden' id='reference_#{search.reference_count}' class='place_reference' value='#{result.reference}'"
     div   += "</div>"
+    search.reference_count += 1
     return div
 
   build_details_div: (place) ->
