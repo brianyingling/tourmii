@@ -3,7 +3,7 @@
     .small-8.columns.small-centered
       .row
         .small-10.columns
-          = text_field_tag  "search", nil, :placeholder=>'search'
+          = text_field_tag  "search", nil, :placeholder=>'search for topics to start your tour'
         .small-2.columns
           = button_to 'Go', nil, :class=>'button tiny secondary', :id=>'search_btn'
     .small-4.columns
@@ -11,9 +11,11 @@
   #results
     .small-6.columns
       #map
+      #details
     .small-6.columns
       #create_tour_form
         = render :partial=>'tours/form'
 .row
   .small-12.columns
-    #details
+    / #details
+    #photo_list

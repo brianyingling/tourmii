@@ -5,6 +5,7 @@ window.places = []
 window.detailedResponses = {}
 window.service = ''
 window.reference_count = 0
+window.slider = ''
 
 window.search =
   lat: 0
@@ -151,11 +152,15 @@ window.search =
       div += "</div></div>"
 
     div += "<div id='photos' class='photos'><a href='' id='photos_link'>Click for Photos</a><br/>"
-    div += "<div id='photo_list'><a href='' class='cancel_btn'>x</a>"
+    # div += "<div id='photo_list'><a href='' class='cancel_btn'>x</a>"
+    window.slider = new Slider('#photo_list')
+    photos = []
     _.each place.photos, (photo) ->
-      div += "<div class='photo'><img src='#{photo.getUrl({maxWidth:200,maxHeight:200})}'/></div>"
+      photos.push({'src':photo.getUrl({maxWidth:500,maxHeight:500})})
+      # div += "<div class='photo'><img src='#{photo.getUrl({maxWidth:200,maxHeight:200})}'/></div>"
     div += "</div></div>"
-
+    window.slider.setPhotos(photos)
+    window.slider.setSize(500,500)
     div += "</div>"
     return div
 

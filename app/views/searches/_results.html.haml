@@ -1,9 +1,22 @@
-.row
-  .small-1.columns
-  .small-9.small-centered.columns
-    #map
-      hello
-  .small-2.columns &nbsp;
-.row
-  .small-12.columns
-    #details
+/ .row
+/   .small-1.columns
+/   .small-9.small-centered.columns
+/     #map
+/       hello
+/   .small-2.columns &nbsp;
+/ .row
+/   .small-12.columns
+/     #details
+%h1.subheader Search Results
+%table
+  %tr
+    %td Name
+    %td Description
+    %td Owner
+    %td Address
+  - @tours.each do |tour|
+    %tr
+      %td= link_to tour.name, tour, :remote=>true
+      %td= tour.description
+      %td= tour.user.name
+      %td= tour.steps.first.address

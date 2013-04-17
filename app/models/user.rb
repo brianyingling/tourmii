@@ -20,4 +20,9 @@ class User < ActiveRecord::Base
   validates :email, :presence=>true, :uniqueness=>true
   has_many :tours
   has_many :orders
+
+  def name
+    "#{self.first_name} #{self.last_name}"
+  end
+
 end

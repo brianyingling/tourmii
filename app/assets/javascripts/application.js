@@ -17,6 +17,7 @@
 //= require 'moment-2.0.0/moment.js'
 //= require 'modernizr.js'
 //= require 'handlebars/handlebars.js'
+//= require 'slider.js'
 //= require 'foundation4/js/vendor/custom.modernizr.js'
 //= require 'foundation4/js/foundation.min.js'
 //= require 'tourmii'

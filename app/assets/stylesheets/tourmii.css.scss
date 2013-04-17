@@ -46,7 +46,13 @@
 
 
 #photo_list {
-  display: none;
+  /*display: inline-block;*/
+display: none;
+float: left;
+position: absolute;
+top: 0;
+left: 0;
+/*
   position: absolute;
   top: 0;
   left: 50px;
@@ -54,7 +60,7 @@
   min-height: 200px;
   background-color: #ccc;
 
-  a {
+  /*a {
     position: relative;
     width: 15px;
     height: 15px;
@@ -65,11 +71,11 @@
     font-weight: bold;
     color: #fff;
     background-color: red;
-  }
+  }*/
 
   .photo {
-  border: 3px solid #000;
-  margin: 10px;
+    border: 3px solid #000;
+    margin: 10px;
   }
 
 }
