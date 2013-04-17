@@ -1,7 +1,19 @@
-%h4.subheader Create Tour
-= form_tag tours_path do
-  = text_field_tag 'tourdata_name', nil, :placeholder=>:name
-  = text_area_tag  'tourdata_description', nil, :placeholder=>:description
-  %h5.subheader Click on Pins to See Places
-  #tour_form_container
-  = submit_tag "Save Tour", :id=>'save_tour_btn'
+.row
+  = form_tag search_query_path, :method=>'get', :remote=>true do
+    .small-8.columns.small-centered
+      .row
+        .small-10.columns
+          = text_field_tag  "search", nil, :placeholder=>'search'
+        .small-2.columns
+          = button_to 'Go', nil, :class=>'button tiny secondary', :id=>'search_btn'
+    .small-4.columns
+.row
+  #results
+    .small-6.columns
+      #map
+    .small-6.columns
+      #create_tour_form
+        = render :partial=>'tours/form'
+.row
+  .small-12.columns
+    #details
