@@ -7,12 +7,12 @@ class Tour < ActiveRecord::Base
 
   # returns the average of the latitude coords for all steps
   def get_average_lat
-    (self.steps.map(&:lat).reduce(:+)) / steps.count
+    self.steps.map(&:lat).compact.reduce(:+) / steps.count
   end
 
   #  returns the average of the longitude coords for all steps
   def get_average_lng
-    (self.steps.map(&:lng).reduce(:+)) / steps.count
+    (self.steps.map(&:lng).compact.reduce(:+)) / steps.count
   end
 
   private

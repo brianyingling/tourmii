@@ -32,6 +32,7 @@ window.showtour =
       map     : showtour.map
       title   : title
     )
+    marker.setMap(showtour.map)
     showtour.markers.push(marker)
 
 

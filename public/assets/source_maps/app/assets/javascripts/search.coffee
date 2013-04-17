@@ -57,18 +57,6 @@ window.search =
       query: $('#search').val().split(' ').join('+')
     window.service = new google.maps.places.PlacesService(map)
     window.service.textSearch(request, search.callback)
-    # window.service.getDetails({reference: request.reference}, search.detailed_callback)
-
-  detailed_callback: (place, status) ->
-    if status == google.maps.places.PlacesServiceStatus.OK
-      console.log(place)
-      console.log(place.name)
-      console.log(place.formatted_address)
-      _.each place.reviews, (review) ->
-        console.log review.text
-    else
-      console.log(status)
-
 
   callback: (results, status) ->
     console.log('callback')
@@ -126,7 +114,6 @@ window.search =
       # search.get_place_details(result)
       refObj =
         reference: result.reference
-      # window.service.getDetails(refObj, search.detailed_callback)
       window.service.getDetails refObj, (place, status) ->
         if status == google.maps.places.PlacesServiceStatus.OK
           console.log(place)

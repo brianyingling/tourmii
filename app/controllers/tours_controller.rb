@@ -7,7 +7,6 @@ class ToursController < ApplicationController
     @tour = Tour.new
   end
   def create
-    binding.pry
     @tour = Tour.new
     (0...params[:tour].length).to_a.each do |num|
       if num.to_s == '0'

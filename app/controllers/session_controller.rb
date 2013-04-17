@@ -6,6 +6,7 @@ class SessionController < ApplicationController
     @auth = User.where(:email=>params[:email]).first
     if @auth.present? && @auth.authenticate(params[:password])
       session[:user_id] = @auth.id
+      redirect_to tours_path
     else
       session[:user_id] = nil
       flash[:notice] = "Incorrect login. Please try again."
