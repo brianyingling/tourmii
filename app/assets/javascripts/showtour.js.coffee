@@ -3,12 +3,19 @@ window.showtour =
   map: ''
   ready: ->
     console.log('showtour.ready...')
+    $('body').on('click','.photos_link',showtour.show_modal)
     showtour.initialize
+
 
   initialize: ->
     console.log('showtour.initialize...')
     showtour.show_map(13, $('#tourmap') )
 
+  show_modal: (e)->
+    console.log('showtour.show_modal...')
+    e.preventDefault
+    $('#photos_modal').foundation('reveal','open')
+    return false
 
   # displays the map on the page. Takes an integer
   # for the zoom and a jquery selector pointing to the

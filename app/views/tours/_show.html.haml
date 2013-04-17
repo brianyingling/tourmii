@@ -20,13 +20,13 @@
           %td
             %div
               = step.name
-            = link_to "Photos | ", nil, :style=>'display:inline-block;'
-            = link_to "Reviews", nil, :style=>'display:inline-block;'
+            = link_to "Photos | ", '#', :style=>'display:inline-block;', :'data-reveal-id'=>"photos_modal_#{step.id}", :class=>'photos_link'
+            = link_to "Reviews", '#', :style=>'display:inline-block;'
           %td= step.address
+        - content_for :modals do
+          .reveal-modal{:id=>"photos_modal_#{step.id}"}
+            %h3 Hello how are you.
+            %a.close-reveal-modal &#215;
   .small-4.columns
     #tourmap
-
-#photos_modal.reveal-modal.large
-  %h3 Hello how are you.
-
 
