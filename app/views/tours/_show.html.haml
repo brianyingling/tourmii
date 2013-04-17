@@ -23,9 +23,6 @@
             = link_to "Photos | ", nil, :style=>'display:inline-block;'
             = link_to "Reviews", nil, :style=>'display:inline-block;'
           %td= step.address
-          %td
-            = link_to "Edit", nil, :class=>'button tiny secondary step_edit_btn', :id=>"step_#{step.position}_edit_btn", :remote=>true
-            = link_to "Delete", step, :method=>'delete', :class=>'button tiny secondary', :confirm=>'Are you sure you want to delete this step?', :remote=>true
   .small-4.columns
     #tourmap
 

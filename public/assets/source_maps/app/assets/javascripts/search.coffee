@@ -18,7 +18,7 @@ window.search =
     console.log('ready')
     $('body').on('click','#search_nav_btn', search.get_location)
     $('body').on('click', '#createtour_nav_btn', search.get_location)
-    $('body').on('click', '#search_btn', search.display_map)
+    $('body').on('click', '#createtour_search_btn', search.display_map)
     $('body').on('click', '.infowindow', search.click_content)
     $('body').on('click', '#reviews_link', search.show_reviews)
     $('body').on('click', '#photos_link', search.show_photos)
