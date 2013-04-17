@@ -128,7 +128,7 @@ window.search =
 
       window.infowindow.setContent(content)
       window.infowindow.open(window.map, marker)
-    # $('#photos_modal').reveal()
+    # $('#reviews_modal').reveal()
 
   build_infowindow_div: (result)->
     div   =  "<div id='#{result.name}' class='infowindow'>"
