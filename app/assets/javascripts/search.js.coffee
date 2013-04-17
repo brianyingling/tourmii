@@ -59,6 +59,7 @@ window.search =
       query: $('#search').val().split(' ').join('+')
     window.service = new google.maps.places.PlacesService(map)
     window.service.textSearch(request, search.callback)
+    return false
 
   callback: (results, status) ->
     console.log('callback')
@@ -127,6 +128,7 @@ window.search =
 
       window.infowindow.setContent(content)
       window.infowindow.open(window.map, marker)
+    # $('#photos_modal').reveal()
 
   build_infowindow_div: (result)->
     div   =  "<div id='#{result.name}' class='infowindow'>"

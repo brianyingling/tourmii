@@ -1,11 +1,11 @@
 .row
-  = form_tag search_query_path, :method=>'get', :remote=>true do
+  = form_tag new_tour_path, :method=>'get', :remote=>true do
     .small-8.columns.small-centered
       .row
         .small-10.columns
           = text_field_tag  "search", nil, :placeholder=>'search for topics to start your tour'
         .small-2.columns
-          = button_to 'Go', nil, :class=>'button tiny secondary', :id=>'search_btn'
+          = button_tag 'Go', :class=>'button tiny secondary', :id=>'search_btn'
     .small-4.columns
 .row
   #results

@@ -7,7 +7,7 @@ window.showtour =
 
   initialize: ->
     console.log('showtour.initialize...')
-    showtour.show_map(13, $('#$tourmap') )
+    showtour.show_map(13, $('#tourmap') )
 
 
   # displays the map on the page. Takes an integer
