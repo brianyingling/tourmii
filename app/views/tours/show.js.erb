@@ -3,4 +3,4 @@ showtour.show_map(<%= @tour.get_average_lat %>, <%= @tour.get_average_lng %>);
 <% @steps.each do |step| %>
   showtour.add_marker(<%= step.lat %>, <%= step.lng %>, '<%= "#{step.position.to_s}. #{step.name}" %>');
 <% end %>
-$(document).foundation();
+// $(document).foundation();

@@ -4,8 +4,11 @@ window.tour =
     $('body').on('click','#save_tour_btn',tour.save)
     $('body').on('click', '.step_edit_btn', tour.edit_step)
     $('body').on('load', '#tourmap', tour.show_tourmap)
+    $('body').on('click','#clear_tours_btn', tour.clear_tours)
 
-
+  clear_tours: ->
+    console.log('clearing tours...')
+    $('#tour_form_container').empty()
   show_tourmap: ->
     console.log('showing tour map...')
 

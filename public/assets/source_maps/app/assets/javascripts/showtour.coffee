@@ -70,14 +70,17 @@ window.showtour =
           $('#reviews_modal').empty().prepend(div)
           $('#reviews_modal').append("<a class='close-reveal-modal'>x</a>")
         else
-          $('#reviews_modal').css('width','500px').css('height','520px');
-          div = "<div class='orbit-container'>"
-          div += "<ul data-orbit=\"\" class='orbit-slides-container'>"
-          _.each place.photos, (p) ->
-            div += "<li>"
-            div += "<img class='photo' src='#{p.getUrl({maxHeight:1000, maxWidth:1000})}' />"
-            div += "</li>"
-          div += "</ul></div>"
+          $('#reviews_modal').css('width','500px').css('height','550px');
+          if _.isEmpty place.photos
+            div += "<li>There are no available photos to show.</li>"
+          else
+            div = "<div class='orbit-container'>"
+            div += "<ul data-orbit=\"\" class='orbit-slides-container'>"
+            _.each place.photos, (p) ->
+                div += "<li>"
+                div += "<img class='photo' src='#{p.getUrl({maxHeight:1000, maxWidth:1000})}' />"
+                div += "</li>"
+            div += "</ul></div>"
           # div += "<script>$(document).foundation()</script>"
           $('#reviews_modal').empty().prepend(div)
           $('#reviews_modal').append("<a class='close-reveal-modal'>x</a>")
