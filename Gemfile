@@ -11,6 +11,8 @@ gem 'carrierwave'
 gem 'fog'
 gem 'rmagick'
 gem 'remotipart'
+gem 'aws-ses'
+gem 'stripe'
 gem 'ember-rails'
 gem 'emblem-rails'        # way of writing templates in JS
 

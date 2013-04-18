@@ -1,7 +1,11 @@
 Tourmii::Application.routes.draw do
   root :to=>'home#index'
-  resources :users, :tours, :steps
-
+  resources :users, :steps
+  resources :tours do
+    member do
+      post 'purchase'
+    end
+  end
   get '/search/new'   => 'searches#new'
   get 'search/query'  => 'searches#query'
 

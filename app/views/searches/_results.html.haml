@@ -10,12 +10,20 @@
 %h1.subheader Search Results
 %table
   %tr
+    %td
     %td Name
     %td Description
     %td Owner
     %td Address
   - @tours.each do |tour|
     %tr
+      %td
+        %script{:src => "https://checkout.stripe.com/v2/checkout.js",
+        :class => "stripe-button",
+        :'data-label' => 'Free',
+        :'data-amount' => 100,
+        :'data-key' => Rails.configuration.stripe[:publishable_key]}
+        = form_tag purchase_tour_path(tour), :remote => true do end
       %td= link_to tour.name, tour, :remote=>true
       %td= tour.description
       %td= tour.user.name

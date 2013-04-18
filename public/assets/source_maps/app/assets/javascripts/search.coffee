@@ -23,6 +23,12 @@ window.search =
     $('body').on('click', '#reviews_link', search.show_reviews)
     $('body').on('click', '#photos_link', search.show_photos)
     $('body').on('click', '.cancel_btn', search.show_photos)
+    $('body').on('token', '.stripe-button', search.process_token)
+
+  process_token: (e, token)->
+    e.preventDefault
+    console.log('processing token...')
+    $(this).parent().find('form').append("<input type='hidden' name='token' value=#{token.id}>").submit()
 
   show_reviews:(e) ->
     e.preventDefault

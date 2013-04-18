@@ -2,11 +2,24 @@
   %h3.subheader my tours
   - if @tours.nil?
     %h4.subheader you have no tours. click 'search' above to find a tour.
-  %table
-    %tr
-      %td name
-      %td description
-    - @tours.each do |tour|
+  - else
+    %table
       %tr
-        %td= link_to tour.name, tour, :remote=>true, :class=>'tour_link'
-        %td= tour.description
+        %td name
+        %td description
+      - @tours.each do |tour|
+        %tr
+          %td= link_to tour.name, tour, :remote=>true, :class=>'tour_link'
+          %td= tour.description
+  %h3.subheader my purchased tours
+  - if @orders.nil?
+    %h4.subheader you have no purchased tours.
+  - else
+    %table
+      %tr
+        %td name
+        %td description
+        - @orders.each do |order|
+          %tr
+            %td= link_to order.tour.name, order.tour, :remote=>true, :class=>'tour_link'
+            %td= order.tour.description

@@ -1,6 +1,7 @@
 class ToursController < ApplicationController
   def index
     @tours = @auth.tours.all
+    @orders = @auth.orders
   end
 
   def new
@@ -29,4 +30,16 @@ class ToursController < ApplicationController
     @tour = Tour.find(params[:id])
     @steps = @tour.steps
   end
+
+  def purchase
+    tour = Tour.find(params[:id])
+    order = Order.create(:date_purchased=>Time.now)
+    @auth.orders << order
+    tour.orders << order
+    # send out a confirmation email
+    @tours = @auth.tours
+    @orders = @auth.orders
+  end
+
+
 end
