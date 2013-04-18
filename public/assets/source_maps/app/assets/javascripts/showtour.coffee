@@ -64,13 +64,25 @@ window.showtour =
         console.log('service status Ok...')
         if contentType == 'reviews'
           console.log(place)
-          div = ""
+          div = "<div class='place'>"
+          div += "<div class='place_name'>#{place.name}</div>"
+          div += "<div class='place_address'>#{place.formatted_address}</div>"
+          div += "<div class='place_phone_number'>#{place.formatted_phone_number}</div>"
+          _.each place.types, (tag) ->
+            div += "<span class='place_tags'>#{tag}</span> "
+
           _.each place.reviews, (r) ->
-           div += "<div>#{r.text}</div>"
+           div += "<div class='place_review'>#{r.text}</div>"
+           div += "<div class='author_name'>Posted by "
+           if r.author_url != undefined
+            div += "<a href='#{r.author_url}'>#{r.author_name}</a>"
+           else
+            div += "<a href='#'>#{r.author_name}</a>"
+           div += " on #{Date(r.time)}</div>"
           $('#reviews_modal').empty().prepend(div)
           $('#reviews_modal').append("<a class='close-reveal-modal'>x</a>")
         else
-          $('#reviews_modal').css('width','500px').css('height','550px');
+          $('#reviews_modal').css('min-width','500px').css('min-height','550px');
           if _.isEmpty place.photos
             div += "<li>There are no available photos to show.</li>"
           else

@@ -3,6 +3,13 @@ body {
   background: rgb(222,233,252);
 }
 
+#tourmap, #map {
+  border: 3px solid black;
+  box-shadow: 5px 5px 25px lightblue;
+  border-radius: 5px;
+
+}
+
 #header {
   background-image: url('world-map.jpg');
   background-size: cover;
@@ -30,6 +37,7 @@ body {
   width: 100%;
   height: 100%;
 }
+
 
 
 #map {
@@ -92,8 +100,35 @@ left: 0;
 
 }
 
+table {
+  border-radius: 15px;
+}
 
 
+
+.place {
+  font-family: 'roboto';
+  .place_name {
+    font-family: 'roboto';
+    border-bottom: 1px solid #000;
+  }
+  .place_phone_number {
+    margin-bottom: 20px;
+  }
+  .place_tags {
+    margin-bottom: 20px;
+    background-color: orange;
+    border-radius: 5px;
+    padding: 5px;
+    color: #fff;
+    margin: 5px 2px;
+  }
+  .place_review {
+    padding: 10px;
+    line-height: 1.3em;
+  }
+
+}
 .review {
   display: none;
 }
