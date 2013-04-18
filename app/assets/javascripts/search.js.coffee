@@ -48,7 +48,8 @@ window.search =
     content = $(this).clone()
     $('#tour_form_container').append(content)
 
-  display_map: ->
+  display_map: (e)->
+    e.preventDefault
     $('#map').show();
     $('#create_tour_form').show()
     canvas = $('#map')[0]
@@ -73,7 +74,6 @@ window.search =
       i = 0
       while i < results.length
         places.push(results[i])
-        # place = results[i]
         search.createMarker(results[i])
         i++
 
@@ -148,7 +148,6 @@ window.search =
     div +=  "<div id='place_address'>#{place.formatted_address}</div>"
     div +=  "<div id='place_price_level'>Price Level: #{place.price_level}</div>"
     div +=  "<div id='place_rating'>Rating: #{place.rating}</div>"
-
     div += "<div id='reviews'><a href='' id='reviews_link'>Click for Reviews</a><br/>"
     _.each place.reviews, (review) ->
       div += "<div class='review'>"
@@ -156,7 +155,6 @@ window.search =
       div += "<div class='review_author'>Reviewed by <a href='#{review.author_url}'>#{review.author_name}</a></div>"
       div += "<div class='review_time'>Posted on #{Date(review.time)}</div>"
       div += "</div></div>"
-
     div += "<div id='photos' class='photos'><a href='' id='photos_link'>Click for Photos</a><br/>"
     # div += "<div id='photo_list'><a href='' class='cancel_btn'>x</a>"
     window.slider = new Slider('#photo_list')

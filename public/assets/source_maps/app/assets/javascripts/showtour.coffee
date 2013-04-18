@@ -23,8 +23,6 @@ window.showtour =
     else
       showtour.show_modal_content(reference, 'photos')
     $('#reviews_modal').foundation('reveal','open')
-
-      # showtour.show_modal_content()
     return false
 
   close_modal: (e) ->
@@ -42,7 +40,6 @@ window.showtour =
       mapTypeId: google.maps.MapTypeId.ROADMAP
       zoom: 13
       center: new google.maps.LatLng(lat, lng)
-
     showtour.map = new google.maps.Map(canvas, mapOptions)
 
   # adds a marker to the map
@@ -73,11 +70,18 @@ window.showtour =
           $('#reviews_modal').empty().prepend(div)
           $('#reviews_modal').append("<a class='close-reveal-modal'>x</a>")
         else
-          div = ""
+          $('#reviews_modal').css('width','500px').css('height','520px');
+          div = "<div class='orbit-container'>"
+          div += "<ul data-orbit=\"\" class='orbit-slides-container'>"
           _.each place.photos, (p) ->
-            div += "<img src='#{p.getUrl({maxHeight:200,maxWidth:200})}' />"
+            div += "<li>"
+            div += "<img class='photo' src='#{p.getUrl({maxHeight:1000, maxWidth:1000})}' />"
+            div += "</li>"
+          div += "</ul></div>"
+          # div += "<script>$(document).foundation()</script>"
           $('#reviews_modal').empty().prepend(div)
           $('#reviews_modal').append("<a class='close-reveal-modal'>x</a>")
+          $(document).foundation()
       else
         console.log(status)
 

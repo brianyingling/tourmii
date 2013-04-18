@@ -1,3 +1,15 @@
+body {
+  /* a nice gray */
+  background: rgb(222,233,252);
+}
+
+#header {
+  background-image: url('world-map.jpg');
+  background-size: cover;
+  border-bottom: 5px solid navy;
+}
+
+
 #page1 {
   .flash_notice {
     color: red;
@@ -12,8 +24,11 @@
     margin: 10px;
   }
 
+}
 
-
+.photo {
+  width: 100%;
+  height: 100%;
 }
 
 #page2 {
@@ -73,12 +88,14 @@ left: 0;
     background-color: red;
   }*/
 
-  .photo {
+  /*.photo {
     border: 3px solid #000;
     margin: 10px;
-  }
+  }*/
 
 }
+
+
 
 .review {
   display: none;
@@ -104,5 +121,11 @@ left: 0;
 .tour_link {
 }
 
+.orbit-bullets {
+  margin: 0 auto 10px 0;
+}
 
+.search_box {
+  margin-top: 10px;
+}
 

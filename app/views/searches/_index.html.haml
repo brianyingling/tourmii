@@ -1,12 +1,13 @@
 .row
-  = form_tag search_query_path, :method=>'get', :remote=>true do
-    .small-8.columns.small-centered
-      .row
-        .small-10.columns
-          = text_field_tag  "search", '', :placeholder=>'search'
-        .small-2.columns
-          = submit_tag 'Go', :class=>'button tiny secondary', :id=>'search_btn'
-    .small-4.columns
+  .search_box
+    = form_tag search_query_path, :method=>'get', :remote=>true do
+      .small-8.columns.small-centered
+        .row
+          .small-10.columns
+            = text_field_tag  "search", '', :placeholder=>'search'
+          .small-2.columns
+            = submit_tag 'Go', :class=>'button tiny secondary', :id=>'search_btn'
+      .small-4.columns
 .row
   #results
     .small-6.columns
