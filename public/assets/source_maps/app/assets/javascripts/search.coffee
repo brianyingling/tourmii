@@ -93,8 +93,6 @@ window.search =
     query += "&key=#{search.key}"
     jsonObj = {}
 
-
-
     # make ajax call
     $.ajax(
       dataType: 'json'

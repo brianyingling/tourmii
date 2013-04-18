@@ -20,15 +20,14 @@
           %td
             %div
               = step.name
-            = link_to "Photos | ", '#', :style=>'display:inline-block;', :'data-reveal-id'=>"reviews_modal_#{step.id}", :class=>'photos_link'
-            = link_to "Reviews", '#', :style=>'display:inline-block;'
+            = link_to "Reviews | ", '#', :style=>'display:inline-block;', :'data-reveal-id'=>"reviews_modal_#{step.id}", :class=>'photos_link'
+            = link_to "Photos", '#', :style=>'display:inline-block;', :'data-reveal-id'=>"reviews_modal_#{step.id}", :class=>'photos_link'
             = hidden_field_tag :reference, step.reference
           %td= step.address
         - content_for :modals do
           .reveal-modal{:id=>"reviews_modal_#{step.id}"}
             %script
-              "showtour.show_tour_reviews()"
-            %h3 Hello how are you.
+              "showtour.show_modal_content()"
             %a.close-reveal-modal &#215;
   .small-4.columns
     #tourmap

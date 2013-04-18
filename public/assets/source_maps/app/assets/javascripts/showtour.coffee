@@ -18,9 +18,13 @@ window.showtour =
     e.preventDefault
     reference = $(this).parent().find('#reference').val()
     # define function to capture reviews
-    showtour.show_tour_reviews(reference)
+    if $(this).html() == 'Reviews | '
+      showtour.show_modal_content(reference, 'reviews')
+    else
+      showtour.show_modal_content(reference, 'photos')
     $('#reviews_modal').foundation('reveal','open')
-    showtour.show_tour_reviews()
+
+      # showtour.show_modal_content()
     return false
 
   close_modal: (e) ->
@@ -53,7 +57,7 @@ window.showtour =
     marker.setMap(showtour.map)
     showtour.markers.push(marker)
 
-  show_tour_reviews: (ref)->
+  show_modal_content: (ref, contentType)->
     console.log('show tour reviews...')
     window.service = new google.maps.places.PlacesService(showtour.map)
     refObj =
@@ -61,13 +65,22 @@ window.showtour =
     window.service.getDetails refObj, (place, status) ->
       if status == google.maps.places.PlacesServiceStatus.OK
         console.log('service status Ok...')
-        console.log(place)
-        div = ''
-        _.each place.reviews, (p) ->
-         div += "<div>#{p.text}</div>"
-        $('#reviews_modal').prepend(div)
+        if contentType == 'reviews'
+          console.log(place)
+          div = ""
+          _.each place.reviews, (r) ->
+           div += "<div>#{r.text}</div>"
+          $('#reviews_modal').empty().prepend(div)
+          $('#reviews_modal').append("<a class='close-reveal-modal'>x</a>")
+        else
+          div = ""
+          _.each place.photos, (p) ->
+            div += "<img src='#{p.getUrl({maxHeight:200,maxWidth:200})}' />"
+          $('#reviews_modal').empty().prepend(div)
+          $('#reviews_modal').append("<a class='close-reveal-modal'>x</a>")
       else
         console.log(status)
+
 
 
 
