@@ -37,6 +37,7 @@ class ToursController < ApplicationController
     @auth.orders << order
     tour.orders << order
     # send out a confirmation email
+    Notifications.confirm_purchase(@auth, tour)
     @tours = @auth.tours
     @orders = @auth.orders
   end
