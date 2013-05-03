@@ -35,4 +35,8 @@ Tourmii::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
+  # Allows Ember to access Active Record
+  config.ember.variant = :development
+
+
 end

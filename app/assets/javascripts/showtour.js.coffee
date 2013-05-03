@@ -30,9 +30,6 @@ window.showtour =
     e.preventDefault
     $('#reviews_modal').foundation('reveal','close')
 
-  # displays the map on the page. Takes an integer
-  # for the zoom and a jquery selector pointing to the
-  # map
   show_map: (lat, lng)->
     console.log('showtour.show_map...')
     canvas = $('#tourmap')[0]

@@ -181,8 +181,6 @@ window.search =
     search.set_infowindow(result, marker)
 
 
-
-
   build_query_string: (keyword) ->
     url = "https://maps.googleapis.com/maps/api/place/textsearch"
     url += "/json"

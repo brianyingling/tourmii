@@ -1,7 +1,12 @@
 class ToursController < ApplicationController
   def index
-    @tours = @auth.tours.all
+   @tours = @auth.tours.all
+   tours = @auth.tours.all
     @orders = @auth.orders
+    respond_to do |format|
+      format.js {render :json => tours}
+      format.html
+    end
   end
 
   def new

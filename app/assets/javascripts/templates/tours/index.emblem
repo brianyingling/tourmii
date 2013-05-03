@@ -1,0 +1,28 @@
+h1 Tours Index
+.12-small.columns
+  h3.subheader my tours
+  each model
+    .model  model.name
+  / if model == null
+  /   h4.subheader you have no tours. click 'search' above to find a tour.
+  / / else
+  /   table
+  /     tr
+  /       td name
+  /       td description
+  /     each model
+  /       tr
+  /         td: linkTo 'tour.name' this class='tour_link':tour.name
+  /         td tour.description
+  / h3.subheader my purchased tours
+  /   if model == null
+  /     h4.subheader you have no purchased tours.
+  /   else
+  /     table
+  /       tr
+  /         td name
+  /         td description
+  /         / - @orders.each do |order|
+  /         /   tr
+  /         /     td link_to order.tour.name, order.tour, :remote=>true, :class=>'tour_link'
+  /         /     td= order.tour.description
