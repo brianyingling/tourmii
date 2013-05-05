@@ -1,22 +1,17 @@
 
-window.App = Ember.Application.create
-  LOG_TRANSITIONS: true
+# window.App = Ember.Application.create
+#   LOG_TRANSITIONS: true
 
-  ready: ->
-    $('#register').click(App.register)
+#   ready: ->
+#     $('#register').click(App.register)
 
-  register: ->
-    alert 'got here'
 
-App.Router.map ->
-  @route 'home'
-  @route 'search'
-  @route 'tours'
-  @route 'createtour'
-  @route 'login'
+# App.Router.map ->
+#   @route 'home'
+#   @route 'search'
+#   @route 'tours'
+#   @route 'login'
 
 
 
 
-
-# $(document).ready(App.ready)

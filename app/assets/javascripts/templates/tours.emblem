@@ -1,3 +1,5 @@
-each model
-  .model = name
+table
+  tr
+    td name
+    td description
 outlet

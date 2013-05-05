@@ -10,6 +10,8 @@ App.Router.map(function() {
   this.resource('tours', function() {
     this.route('new');
     this.route('index');
+    this.route('show', {path: ':tour_id'});
+    // this.route('tour', {path: '/tour/:tour_id'});
   });
 });
 
