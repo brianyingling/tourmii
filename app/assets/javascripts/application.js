@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require 'underscore-1.4.4/underscore.js'
+//= require 'backbone.js'
 //= require 'sugar/sugar-1.3.9.min.js'
 //= require 'moment-2.0.0/moment.js'
 //= require 'modernizr.js'
@@ -26,6 +27,9 @@
 //= require 'search.js'
 //= require 'tour.js'
 //= require 'showtour.js'
+
+//= require 'models/tour.js'
+//= require 'models/stop.js'
 
 
 
