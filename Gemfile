@@ -14,6 +14,7 @@ gem 'remotipart'
 gem 'aws-ses'
 gem 'stripe'
 gem 'ember-rails'
+gem 'backbone-on-rails'
 gem 'emblem-rails'        # way of writing templates in JS
 
 group :assets do
