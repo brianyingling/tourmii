@@ -1,3 +1,20 @@
-h1 Tours Show
-p = name
-p = description
+.row
+  .row
+    .small-6.columns
+      h2.subheader = name
+      h1 Tours Show
+      table
+        tr
+          td step
+          td name
+          td address
+          td links
+        each step in steps
+          tr
+            td = step.position
+            td = step.name
+            td = step.address
+            td
+              a href='#' style='display:inline-block;' data-reveal-id=step.id class='photos_link' Reviews
+    .small-6.columns
+      #tourmap

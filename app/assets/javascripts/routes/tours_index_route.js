@@ -1,5 +1,5 @@
 App.ToursIndexRoute = Ember.Route.extend({
-model: function() {
+  model: function() {
     return App.Tour.find();
   }
 });
