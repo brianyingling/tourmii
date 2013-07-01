@@ -16,10 +16,7 @@ class ToursController < ApplicationController
     respond_with @tour
   end
   def show
-    @tour = Tour.find(params[:id])
-    binding.pry
-    respond_with @tour.to_json(:include => {@tour.steps => {:except => :description}})
-    # @steps = @tour.steps
+    respond_with Tour.find(params[:id])
   end
 
   def purchase
@@ -38,5 +35,13 @@ class ToursController < ApplicationController
     @tour.update_attributes(params[:tour])
     respond_with @tour
   end
+
+  # written so that we don't have the name appearing as the root of the JSON
+  # Probably should move this to ApplicationController so that its for all
+  # controllers
+  def default_serializer_options
+    {root: false}
+  end
+
 
 end

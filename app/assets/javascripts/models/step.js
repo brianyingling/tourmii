@@ -1,6 +1,6 @@
-var Stop;
+var Step;
 
-Stop = Backbone.Model.extend({
+Step = Backbone.Model.extend({
     defaults: {
         name: String
       , lat: Number
@@ -13,6 +13,6 @@ Stop = Backbone.Model.extend({
       , tour: Object
     }
   , initialize: function() {
-      console.log("Stop initialized");
+      console.log("Step initialized");
   }
 });

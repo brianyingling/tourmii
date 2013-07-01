@@ -29,7 +29,7 @@
 //= require 'showtour.js'
 
 //= require 'models/tour.js'
-//= require 'models/stop.js'
+//= require 'models/step.js'
 //= require 'models/location.js'
 //= require 'models/user.js'
 
