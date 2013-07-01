@@ -17,7 +17,9 @@ class ToursController < ApplicationController
   end
   def show
     @tour = Tour.find(params[:id])
-    @steps = @tour.steps
+    binding.pry
+    respond_with @tour.to_json(:include => {@tour.steps => {:except => :description}})
+    # @steps = @tour.steps
   end
 
   def purchase

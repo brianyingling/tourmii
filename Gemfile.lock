@@ -282,6 +282,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers
   annotate
   aws-ses
   backbone-on-rails

@@ -15,7 +15,8 @@ gem 'aws-ses'
 gem 'stripe'
 gem 'ember-rails'
 gem 'backbone-on-rails'
-gem 'emblem-rails'        # way of writing templates in JS
+gem 'emblem-rails'              # way of writing templates in JS
+gem 'active_model_serializers'  # used for object relationships in JSON
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

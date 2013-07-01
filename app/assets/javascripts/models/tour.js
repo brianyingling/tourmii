@@ -4,7 +4,7 @@ Tour = Backbone.Model.extend({
     defaults: {
         name: String
       , user: Object
-      , stops: Array
+      , steps: Array
       , images: Array
     }
   , url: function() {
