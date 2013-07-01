@@ -16,4 +16,7 @@ class UsersController < ApplicationController
   def update
     binding.pry
   end
+  def default_serializer_options
+    {root: false}
+  end
 end

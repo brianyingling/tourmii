@@ -12,6 +12,10 @@ Step = Backbone.Model.extend({
       , recording: Object
       , tour: Object
     }
+  , url: function() {
+      console.log('step url...');
+      return this.isNew() ? '/steps' : '/steps/'+this.get('id');
+  }
   , initialize: function() {
       console.log("Step initialized");
   }
