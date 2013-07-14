@@ -1,6 +1,4 @@
-var Image;
-
-Image = Backbone.Model.extend({
+var Image = Backbone.Model.extend({
     defaults: {
       filename: String
     }

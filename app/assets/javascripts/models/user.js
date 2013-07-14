@@ -1,6 +1,5 @@
-var User;
 
-User = Backbone.Model.extend({
+var User = Backbone.Model.extend({
     defaults: {
         first_name: String
       , last_name: String

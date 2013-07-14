@@ -12,8 +12,10 @@ class SessionController < ApplicationController
       session[:user_id] = nil
       flash[:notice] = "Incorrect login. Please try again."
     end
-
-  # redirect_to root_path
+    respond_to do |format|
+      format.html { redirect_to root_path}
+      format.js
+    end
   end
 
   def destroy

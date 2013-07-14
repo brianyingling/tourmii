@@ -9,9 +9,7 @@ describe 'Tours' do
       visit root_path
       click_link('tours')
       page.should have_text('My Tours')
-
     end
-
   end
 end
 

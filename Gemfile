@@ -4,7 +4,7 @@ gem 'rails'
 gem 'pg'
 gem 'jquery-rails'
 gem 'haml'
-gem 'bcrypt-ruby'
+gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'carrierwave'
@@ -17,6 +17,7 @@ gem 'ember-rails'
 gem 'backbone-on-rails'
 gem 'emblem-rails'              # way of writing templates in JS
 gem 'active_model_serializers'  # used for object relationships in JSON
+gem 'httparty'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

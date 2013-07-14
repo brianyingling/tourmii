@@ -1,6 +1,4 @@
-var Tour;
-
-Tour = Backbone.Model.extend({
+var Tour = Backbone.Model.extend({
     defaults: {
         name: String
       , user: Object

@@ -1,6 +1,4 @@
-var Location;
-
-Location = Backbone.Model.extend({
+var Location = Backbone.Model.extend({
     defaults: {
         lat: Number
       , lng: Number

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130417004350) do
+ActiveRecord::Schema.define(:version => 20130701020110) do
 
   create_table "orders", :force => true do |t|
     t.integer  "tour_id"
@@ -38,9 +38,10 @@ ActiveRecord::Schema.define(:version => 20130417004350) do
     t.string   "audiofile"
     t.integer  "position"
     t.integer  "tour_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.string   "reference"
+    t.boolean  "is_complete", :default => false
   end
 
   create_table "tours", :force => true do |t|

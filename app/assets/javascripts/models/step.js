@@ -1,6 +1,4 @@
-var Step;
-
-Step = Backbone.Model.extend({
+var Step = Backbone.Model.extend({
     defaults: {
         name: String
       , lat: Number
