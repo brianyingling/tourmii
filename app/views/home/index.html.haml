@@ -1,30 +1,3 @@
-/ THIS IS THE TITLE
-/
-/
-/ #header
-/   .row
-/     .small-3.columns
-/     .small-6.small-centered.columns
-/       %h1.subheader.small-centered{:style=>'text-align:center;'} tourmii
-/     .small-3.columns
-/   .row
-/     #menu
-/       - if @auth.present?
-/         = render :partial=>'menus/usermenu'
-/       - else
-/         = render :partial=>'menus/loginmenu'
-/ .row
-/   #page1
-/     - if @auth.present?
-/       = render :partial=>'searches/index'
-/     - else
-/       = render :partial=>'home/form'
-/ #reviews_modal.reveal-modal
-/   %a.close-reveal-modal &#215;
-/   .orbit-container
+.image-container(style="background:url('#{@photo_url}') no-repeat center center fixed;")
 
-.image-container(style="background:url('#{@photo_url}') no-repeat center center fixed;min-width:1024px;min-height:100%;width:100%;height:auto;position:fixed;top:0;left:0;background-size:cover;")
-  %h1(style="background-color:whitesmoke;color:black;font-weight:300;") Welcome to Tourmii
-  .title
-    #{@image_title}
 

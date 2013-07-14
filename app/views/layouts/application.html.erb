@@ -13,9 +13,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="container" style="width:100%;height:100%;">
-  <%= yield %>
-</div>
+  <%= render :partial => 'shared/nav' %>
+  <div class="container">
+    <%= yield %>
+  </div>
 
 <%= yield content_for :modals %>
  <script>

@@ -1,6 +1,8 @@
 class HomeController < ApplicationController
   def index
-    url = "http://api.flickr.com/services/rest/?method=flickr.interestingness.getList"
+    # url = "http://api.flickr.com/services/rest/?method=flickr.interestingness.getList"
+    url = "http://api.flickr.com/services/rest/?method=flickr.photos.search"
+    url += "&text=landscapes"
     url += "&api_key=" + ENV['FLICKR_TOURMII_API_KEY']
     url += "&format=json&nojsoncallback=1"
     url += "&extras=url_b"
