@@ -8,7 +8,7 @@
     %ul.left
       %li.divider
       %li
-        %input.search-field(type='text' placeholder='Search for places near you')
+        = text_field_tag 'search', nil, :class=>'search-field', :placeholder=>'Search for places near you', :autofocus=>'autofocus'
     %ul.right
       %li.divider
       %li.toggle-topbar.menu-icon
