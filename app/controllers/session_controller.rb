@@ -7,13 +7,12 @@ class SessionController < ApplicationController
     if @auth.present? && @auth.authenticate(params[:password])
       session[:user_id] = @auth.id
       @tours = @auth.tours
-      # redirect_to tours_path
     else
       session[:user_id] = nil
       flash[:notice] = "Incorrect login. Please try again."
     end
     respond_to do |format|
-      format.html { redirect_to root_path}
+      format.html { redirect_to home_path}
       format.js
     end
   end
