@@ -1,9 +1,8 @@
 var TourmiiRouter = Backbone.Router.extend({
   routes: {
-    '/':'home',
     'tours':'toursIndex',
     'tours/:id':'showTour',
-    '*default':'defaultRoute'
+    '/':'defaultRoute'
   },
   home: function() {
     console.log('home...');
@@ -16,12 +15,8 @@ var TourmiiRouter = Backbone.Router.extend({
     console.log(id);
   },
   defaultRoute: function() {
-    this.navigate('/',{trigger:true});
+    console.log('default route...');
+    main = new MainView();
+    main.render().$el;
   }
 });
-
-// instantiate Router
-var tourmiiRouter = new TourmiiRouter();
-
-// needed for urls
-Backbone.history.start();

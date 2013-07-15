@@ -1,5 +1,5 @@
 Tourmii::Application.routes.draw do
-  root :to=>'home#index'
+  root :to=>'home#welcome'
   resources :users, :steps
   resources :tours do
     member do

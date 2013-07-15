@@ -23,7 +23,6 @@
 //= require 'foundation4/js/vendor/custom.modernizr.js'
 //= require 'foundation4/js/foundation.min.js'
 //= require 'foundation4/js/foundation/foundation.orbit.js'
-//= require 'tourmii'
 //= require 'search.js'
 //= require 'tour.js'
 //= require 'showtour.js'
@@ -40,3 +39,6 @@
 //= require_tree ./collections
 //= require_tree ./views
 //= require_tree ./routers
+
+//= require 'tourmii.js'
+

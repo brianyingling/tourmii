@@ -1,12 +1,16 @@
 class HomeController < ApplicationController
   def index
+  end
+
+  def search
+  end
+
+  def welcome
+    @user = User.new
     @response = query_flickr("landscapes")
     @photo = choose_photo(@response)
     @photo_url = build_flickr_photo_url(@photo)
     @image_title = @photo['title']
-  end
-
-  def search
   end
 
   # Retrieves a json object of photos from Flickr
