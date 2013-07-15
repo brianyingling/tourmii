@@ -14,8 +14,9 @@
       %li
         = text_field_tag 'search', nil, :class=>'search-field', :placeholder=>'Search for places near you', :autofocus=>'autofocus'
     %ul.right
-      %li.has-dropdown
-        %a(href="#")= @auth.email if @auth.present?
-        %ul.dropdown
-          %li= link_to :Settings
-          %li= link_to :Logout, login_path, :method=>'delete'
+      - if @auth.present?
+        %li.has-dropdown
+          %a(href="#")= @auth.email
+          %ul.dropdown
+            %li= link_to :Settings
+            %li= link_to :Logout, login_path, :method=>'delete'

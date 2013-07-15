@@ -2,6 +2,7 @@
 var MainView = Backbone.View.extend({
   el: $(".container"),
   className: 'main-view',
+  template: _.template( $('#main-template') ),
   events: {},
 
   initialize: function() {
