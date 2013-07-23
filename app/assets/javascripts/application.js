@@ -19,6 +19,8 @@
 //= require 'modernizr.js'
 //= require 'handlebars/handlebars.js'
 //= require 'slider.js'
+//= require 'sinon.js'
+//= require 'jasmine-sinon.js'
 //= require 'foundation4/js/vendor/zepto.js'
 //= require 'foundation4/js/vendor/custom.modernizr.js'
 //= require 'foundation4/js/foundation.min.js'
@@ -34,6 +36,7 @@
 
 
 //= require_tree ./templates
+//= require_tree ./classes
 //= require_tree ./models
 //= require_tree ./collections
 //= require_tree ./views

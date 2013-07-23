@@ -13,7 +13,6 @@ gem 'rmagick'
 gem 'remotipart'
 gem 'aws-ses'
 gem 'stripe'
-gem 'ember-rails'
 gem 'backbone-on-rails'
 gem 'emblem-rails'              # way of writing templates in JS
 gem 'active_model_serializers'  # used for object relationships in JSON
@@ -28,6 +27,8 @@ end
 
 
 group :development, :test do
+  gem 'jasmine'
+  gem 'jasminerice'
   gem 'coffee-rails-source-maps'
   gem 'factory_girl_rails'
   gem 'guard-rspec'
@@ -45,4 +46,8 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'meta_request'
   gem 'selenium-webdriver'
+  gem 'spork'
+  gem 'guard-spork'
+  gem 'guard-jasmine'
+  gem 'turn', :require => false
 end

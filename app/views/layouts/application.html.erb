@@ -6,6 +6,16 @@
   <link href='http://fonts.googleapis.com/css?family=Buenard' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
+  <!-- load authentication key for foursquare -->
+  <%= javascript_tag defer: 'defer' do %>
+  var config = {
+      foursquare: {
+        apiKey: "<%= ENV['FOURSQUARE_TUTORIAL_PUB'] %>",
+        authUrl: 'https://foursquare.com',
+        apiUrl: 'https://api.foursquare.com'
+      }
+   };
+  <% end %>
   <!-- load js templates -->
   <%= render :partial => 'shared/js-templates' %>
 

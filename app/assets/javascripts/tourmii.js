@@ -8,8 +8,7 @@ Backbone.history.start();
 
 
 // Initiate mainView once user logs in
-var mainView = new MainView( {el:$('.container')} );
+// var mainView = new MainView( {el:$('.container')} );
 // mainView.render().$el;
-
 
 });

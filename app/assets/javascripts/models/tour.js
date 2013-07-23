@@ -5,12 +5,18 @@ var Tour = Backbone.Model.extend({
       , steps: Array
       , images: Array
     }
+
+
   , url: function() {
       return (this.isNew() ) ? '/tours/' : '/tours/' + this.get('id');
   }
 
   , initialize: function() {
       console.log('new tour...');
+      this.on('change', this.update);
+  }
+  , getName: function() {
+      return this.get('name');
   }
 
   , parse: function(response) {
@@ -19,6 +25,9 @@ var Tour = Backbone.Model.extend({
       this.set({user: new User(response.user)});
       this.set({steps: new StepCollection( response.steps )});
       this.set({images: response.images});
+  }
+  , update: function() {
+      this.save();
   }
 });
 

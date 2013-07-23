@@ -1,2 +1,6 @@
-%h1 This works!
+// Initiate mainView once user logs in
+/ = render :partial => 'home/load'
 
+%script
+  var mainView = new MainView( {el:$('.container')} );
+  mainView.render().$el;
