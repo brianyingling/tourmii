@@ -6,7 +6,6 @@ var Tour = Backbone.Model.extend({
       , images: Array
     }
 
-
   , url: function() {
       return (this.isNew() ) ? '/tours/' : '/tours/' + this.get('id');
   }

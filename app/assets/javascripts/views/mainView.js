@@ -9,8 +9,12 @@ var MainView = Backbone.View.extend({
   },
   render: function() {
     console.log('mainView render...');
+    var tourMenuView;
 
     this.$el.html( this.template);
+
+    tourMenuView = new TourMenuView();
+    tourMenuView.render().$el;
 
     // establish views once user logs in:
     // 1. TourView
