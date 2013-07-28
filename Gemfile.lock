@@ -179,6 +179,7 @@ GEM
     json (1.8.0)
     launchy (2.3.0)
       addressable (~> 2.3)
+    leaflet-rails (0.6.2)
     listen (1.2.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -336,6 +337,7 @@ DEPENDENCIES
   jasminerice
   jquery-rails
   launchy
+  leaflet-rails
   meta_request
   pg
   pry-debugger

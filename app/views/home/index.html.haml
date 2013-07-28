@@ -1,6 +1,5 @@
-// Initiate mainView once user logs in
-/ = render :partial => 'home/load'
-/ %h1= @auth.first_name
+/ load dependencies (foursquare verification, etc.)
+= render :partial => 'home/load', :locals => {:api_key => @api_key, :api_sec => @api_sec, :auth_url => @auth_url, :api_url => @api_url}
 
 %script
   var user = new User({id:"#{@auth.id}" });

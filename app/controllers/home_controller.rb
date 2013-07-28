@@ -1,5 +1,10 @@
 class HomeController < ApplicationController
   def index
+    # authenticate foursquare user with oauth
+    @api_key = ENV['FOURSQUARE_PUB']
+    @api_sec = ENV['FOURSQUARE_SEC']
+    @auth_url = 'https://foursquare.com'
+    @api_url = 'https://api.foursquare.com'
   end
 
   def search

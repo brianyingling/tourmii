@@ -13,6 +13,7 @@ gem 'rmagick'
 gem 'remotipart'
 gem 'aws-ses'
 gem 'stripe'
+gem 'leaflet-rails'
 gem 'backbone-on-rails'
 gem 'emblem-rails'              # way of writing templates in JS
 gem 'active_model_serializers'  # used for object relationships in JSON

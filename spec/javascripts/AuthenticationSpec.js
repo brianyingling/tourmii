@@ -7,10 +7,10 @@ describe('Authentication', function() {
       expect(authentication).toBeDefined();
     });
   });
-  // describe('#requestAccess', function() {
-  //   it('authenticates a request for access to an API', function() {
-  //     haveAccess = authentication.requestAccess();
-  //     expect(haveAccess).toBeTruthy();
-  //   });
-  // });
+  describe('#requestAccess', function() {
+    // it('authenticates a request for access to an API', function() {
+    //   haveAccess = authentication.requestAccess();
+    //   expect(haveAccess).toBeTruthy();
+    // });
+  });
 });

@@ -55,11 +55,20 @@ body {
   .tour-menu-container {
     display: inline-block;
     width: 25%;
+    border: 1px solid red;
+    margin-left: 20px;
+    list-style-type: none;
   }
 
   .map {
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    top: 0;
+    right: 10px;
     display: inline-block;
     vertical-align: top;
+    border-radius: 3px;
   }
 
 
