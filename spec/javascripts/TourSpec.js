@@ -54,10 +54,12 @@ describe('Tour', function() {
     });
     it('updates the server when the name changes', function() {
       tour.set('name', 'Sample Tour Number Two');
+      tour.save();
       expect(this.save_stub.called).toBeTruthy();
     });
     it('updates the server when the user changes', function() {
       tour.set('user', new User() );
+      tour.save();
       expect(this.save_stub.called).toBeTruthy();
     });
     it('updates the server when the steps change', function() {
@@ -67,10 +69,12 @@ describe('Tour', function() {
       steps.add(s1);
       steps.add(s2);
       tour.set('steps', steps );
+      tour.save();
       expect(this.save_stub.called).toBeTruthy();
     });
     it('updates the server when the images change', function() {
       tour.set('images', new ImageCollection() );
+      tour.save();
       expect(this.save_stub.called).toBeTruthy();
     });
 

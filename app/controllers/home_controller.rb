@@ -21,7 +21,7 @@ class HomeController < ApplicationController
     url += "&format=json&nojsoncallback=1"
     url += "&extras=url_b"
     HTTParty.get(url)
-    end
+  end
 
   # receives a json object from flickr and returns a url to flickr to retrieve it.
   def build_flickr_photo_url(photo)

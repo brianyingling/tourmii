@@ -1,7 +1,13 @@
 // Initiate mainView once user logs in
 / = render :partial => 'home/load'
+/ %h1= @auth.first_name
 
 %script
-  var mainView = new MainView( {el:$('.container')} );
+  var user = new User({id:"#{@auth.id}" });
+  user.fetch({
+  success: function() {
+  var mainView = new MainView( {el:$('.container'), user:user} );
   mainView.render().$el;
+  }
+  });
 

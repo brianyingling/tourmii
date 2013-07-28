@@ -1,16 +1,23 @@
 var TourMenuView = Backbone.View.extend({
-  className: 'tour-menu',
+  tagName: 'ul',
+  className: 'tour-menu-container',
+  events: {},
+
   initialize: function() {
     console.log('tourMenuView rendered...');
     this.tours = this.options.tours;
-
   },
-  render: function() {
-    _.each(tours.models, function(tour) {
-      tourMenuItemView = new TourMenuItemView({model: tour});
-      this.$el.append( tourMenuItemView.render().el );
-    });
 
+  render: function() {
+    var tours = this.tours.models;
+    var tourMenuItems = [];
+
+    _.each(tours, function(tour) {
+      tourMenuItemView = new TourMenuItemView({model: tour});
+      tourMenuItems.push( tourMenuItemView.render().el );
+    });
+    this.$el.html( tourMenuItems );
     return this;
   }
+
 });

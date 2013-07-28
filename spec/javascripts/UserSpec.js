@@ -54,14 +54,18 @@ describe('User', function() {
 
     it('updates the server when first name is changed', function() {
       this.user.set('first_name', 'Joe');
+      this.user.save();
       expect(this.save_stub.called).toBeTruthy();
     });
     it('updates the server when the last name is changed', function() {
       this.user.set('last_name', "Smith");
+      this.user.save();
       expect(this.save_stub.called).toBeTruthy();
     });
     it('updates the server when the email is changed', function() {
       this.user.set('email', 'byingling@gmail.com');
+      this.user.save();
+      expect(this.save_stub.called).toBeTruthy();
     });
 
   });

@@ -13,10 +13,11 @@ describe('TourMenuView', function() {
       {id:1},
       {first_name:'Tom'},
       {last_name:'Jones'},
-      {tours:this.tours});
-    user.fetch();
+      {tours:this.tours}
+    );
+    user.save();
     tours = user.get('tours');
-    tourMenuView = new TourMenuView({tours:this.tours});
+    tourMenuView = new TourMenuView({tours:tours});
   });
   afterEach(function() {
     this.server.restore();
@@ -31,8 +32,12 @@ describe('TourMenuView', function() {
       menu = tourMenuView.render().el;
       expect( $(menu) ).toBeDefined();
     });
-    it('lists all of the user\'s tours', function() {
-      expect(tours.length).toEqual( $('.tour-menu li').length );
+  });
+  describe('when clicked', function() {
+    it('should display the tour\'s basic info', function() {
+
+    });
+    it('should display the tour\'s map', function() {
     });
   });
 });

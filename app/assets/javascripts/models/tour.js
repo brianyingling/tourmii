@@ -25,8 +25,5 @@ var Tour = Backbone.Model.extend({
       this.set({steps: new StepCollection( response.steps )});
       this.set({images: response.images});
   }
-  , update: function() {
-      this.save();
-  }
 });
 

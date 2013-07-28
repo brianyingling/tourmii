@@ -6,20 +6,26 @@ var MainView = Backbone.View.extend({
 
   initialize: function() {
     console.log('mainView initialize...');
+    // set the first tour in the collection as the one selected
+    // on initial load
+    var firstTour = user.get('tours').models[0];
+    tourSelected = new TourSelected({tour:firstTour});
   },
   render: function() {
     console.log('mainView render...');
-    var tourMenuView;
+    var html, tourMenuView, tour;
 
-    this.$el.html( this.template);
+    // build the tour menu
+    tourMenuView = new TourMenuView({tours:user.get('tours')} );
+    tourMenuHtml = tourMenuView.render().$el;
 
-    tourMenuView = new TourMenuView();
-    tourMenuView.render().$el;
+    // build the map
+    tour = user.get('tours').models[0];
+    mapView = new MapView({model: window.tourSelected});
+    mapViewHtml = mapView.render().el;
 
-    // establish views once user logs in:
-    // 1. TourView
-    // 2. TourView establishes StepViews
-    // 3. TourView also establishes MapView
+    this.$el.html( tourMenuHtml );
+    this.$el.append( mapViewHtml );
     return this;
   }
 });

@@ -14,8 +14,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = user.find(params[:id])
-    @user.update_attributes(params[:user])
+    @user = User.find(params[:id])
+    @user.first_name = params[:first_name]
+    @user.last_name = params[:last_name]
+    @user.email = params[:email]
+    @user.save
+    # @user.update_attributes(params[:user])
     render :json => @user
   end
   def default_serializer_options

@@ -12,7 +12,7 @@ var User = Backbone.Model.extend({
       return (this.get('id')) ? '/users/' + this.get('id') : '/users/';
   }
   , initialize: function() {
-      this.on('change', this.update);
+      // this.on('change', this.update);
 
   }
   , parse: function(response) {
