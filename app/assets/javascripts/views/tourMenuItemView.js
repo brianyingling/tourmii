@@ -24,8 +24,6 @@
           window.tourSelected.set({tour:tour});
         }
       });
-
-
     },
 
     render: function() {
