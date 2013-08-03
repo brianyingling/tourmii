@@ -1,0 +1,5 @@
+%script
+  console.log('got here');
+  console.log("#{@api_key}");
+  var authentication = new Authentication("#{@api_key}", "#{@auth_url}", "#{@api_url}");
+
