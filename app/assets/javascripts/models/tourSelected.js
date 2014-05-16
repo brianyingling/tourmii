@@ -4,5 +4,8 @@ var TourSelected = Backbone.Model.extend({
   },
   initialize: function(options) {
     this.tour = options.tour;
+  },
+  url: function() {
+    return this.tour.url();
   }
 });

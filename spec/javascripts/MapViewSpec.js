@@ -5,8 +5,21 @@ describe('MapView', function() {
     spy = sinon.spy();
     user = new User();
     tours = new TourCollection();
-    tours.add( new Tour({name:'tour1'}));
-    tours.add( new Tour({name:'tour2'}));
+    t1 = new Tour({name:'tour1'});
+    t2 = new Tour({name:'tour2'});
+    s1 = new Step({name:'step1',
+                   lat: 0.7,
+                   lng: -0.9});
+    s2 = new Step({name:'step2',
+                   lat: 0.7,
+                   lng: -0.9});
+
+    stepCollection = new StepCollection();
+    stepCollection.add(s1);
+    stepCollection.add(s2);
+    t1.set('steps', stepCollection);
+    tours.add(t1);
+    tours.add(t2);
     user.set({tours:tours});
     mapView = new MapView({model: tours.models[0]});
 
@@ -88,4 +101,43 @@ describe('MapView', function() {
       expect(onSuccess).toHaveBeenCalled();
     });
   });
+  describe('#addMarkers', function() {
+    it('should have been called', function() {
+      var spy = jasmine.createSpy();
+      spyOn(mapView, 'addMarkers').andCallFake(spy);
+      mapView.addMarkers();
+      expect(spy).toHaveBeenCalled();
+
+    });
+    it('should call addMarker for every marker in the markers array', function() {
+      var addMarkerSpy, markers;
+      addMarkerSpy = jasmine.createSpy();
+      spyOn(mapView, 'addMarker').andCallFake(addMarkerSpy);
+      mapView.addMarkers();
+      expect(addMarkerSpy.callCount).toEqual(mapView.markers.length);
+    });
+  });
+  describe('#addMarker', function() {
+    it('should be called by the addMarkers() function', function() {
+      var addMarkerSpy = jasmine.createSpy();
+      spyOn(mapView, 'addMarker').andCallFake(addMarkerSpy);
+      mapView.addMarkers();
+      expect(addMarkerSpy).toHaveBeenCalled();
+    });
+    it('should make a call for a marker', function() {
+      var marker = L.marker([0,0]),
+          callback = sinon.spy;
+      marker.on('addMarker', callback);
+
+      mapView.addMarker(marker);
+      expect(callback).toHaveBeenCalled();
+
+    });
+  });
+  describe('#render', function() {
+    it('returns the view object', function() {
+      expect(mapView.render()).toEqual(mapView);
+    });
+  });
 });
+

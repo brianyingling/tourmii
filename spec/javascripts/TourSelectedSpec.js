@@ -18,4 +18,9 @@ describe('TourSelected', function() {
       expect(tour).toEqual(tours.models[0]);
     });
   });
+  describe('#url', function() {
+    it('should have the same url as its model url', function() {
+      expect(tourSelected.url() ).toEqual(tourSelected.get('tour').url() );
+    });
+  });
 });

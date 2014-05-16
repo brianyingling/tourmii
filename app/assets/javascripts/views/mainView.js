@@ -9,6 +9,7 @@ var MainView = Backbone.View.extend({
     // set the first tour in the collection as the one selected
     // on initial load
     var firstTour = user.get('tours').models[0];
+
     tourSelected = new TourSelected({tour:firstTour});
   },
   render: function() {
