@@ -8,12 +8,16 @@ class SessionController < ApplicationController
       session[:user_id] = @auth.id
       @tours = @auth.tours
     else
+      @auth = nil
       session[:user_id] = nil
       flash[:notice] = "Incorrect login. Please try again."
     end
-    respond_to do |format|
-      format.html { redirect_to home_path}
-      format.js
+
+    # render auth if successful, otherwise return error msg
+    if @auth.present?
+      render :json => @auth, :head => :ok
+    else
+      render :json => {:error => {:message =>"Invalid username or password"}}, :status => :unauthorized
     end
   end
 
