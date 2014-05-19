@@ -92,7 +92,6 @@ var MapView = Backbone.View.extend({
 
     // add marker to map
     map.addLayer(marker);
-    debugger;
 
   },
 
@@ -115,8 +114,10 @@ var MapView = Backbone.View.extend({
       var lat, lng, latlng;
       lat = data['coords']['latitude'];
       lng = data['coords']['longitude'];
+      debugger;
 
-      this.map = new L.mapbox.map('map', 'bmy78.map-z27ovm6p')
+      self.map.remove();
+      self.map = new L.mapbox.map('map', 'bmy78.map-z27ovm6p')
                   .setView(new L.LatLng(lat, lng), 15);
 
       console.log('lat', lat);
@@ -126,6 +127,7 @@ var MapView = Backbone.View.extend({
       mapboxUrl = "http://a.tiles.mapbox.com/v3/bmy78.map-z27ovm6p.jsonp";
       wax.tilejson(mapboxUrl, function(tilejson) {
         connector = new wax.leaf.connector(tilejson);
+        debugger;
         self.map.addLayer(connector);
       });
     });
