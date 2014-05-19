@@ -27,7 +27,7 @@
 //= require 'foundation4/js/foundation/foundation.orbit.js'
 //= require 'leaflet'
 //= require 'mapbox'
-//= require 'wax.leaf.min.js'
+//= require 'wax.leaf.js'
 //= require 'search.js'
 //= require 'tour.js'
 //= require 'showtour.js'
