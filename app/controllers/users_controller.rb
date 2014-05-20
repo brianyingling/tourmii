@@ -9,7 +9,10 @@ class UsersController < ApplicationController
     @user = User.create(params[:user])
     if @user.save
       session[:user_id] = @user.id
-      redirect_to tours_path
+      # redirect_to tours_path
+      render :json => @user, :head => :ok
+    else
+      render :json => {:error => {:messages => @user.errors}}, :status => :unauthorized
     end
   end
 
