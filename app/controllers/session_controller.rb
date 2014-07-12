@@ -15,7 +15,7 @@ class SessionController < ApplicationController
 
     # render auth if successful, otherwise return error msg
     if @auth.present?
-      render :json => @auth, :head => :ok
+      render :json => @auth, :include => {:tours => {:include => :steps }}, :head => :ok
     else
       render :json => {:error => {:message =>"Invalid username or password"}}, :status => :unauthorized
     end
