@@ -7,13 +7,18 @@ class SessionController < ApplicationController
     if @auth.present? && @auth.authenticate(params[:password])
       session[:user_id] = @auth.id
       @tours = @auth.tours
-      # redirect_to tours_path
     else
+      @auth = nil
       session[:user_id] = nil
       flash[:notice] = "Incorrect login. Please try again."
     end
 
-  # redirect_to root_path
+    # render auth if successful, otherwise return error msg
+    if @auth.present?
+      render :json => @auth.to_json(:include => {:tours => {:include => :steps }})
+    else
+      render :json => {:error => {:message =>"Invalid username or password"}}, :status => :unauthorized
+    end
   end
 
   def destroy

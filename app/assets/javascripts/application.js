@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require 'underscore-1.4.4/underscore.js'
+//= require 'backbone.js'
 //= require 'sugar/sugar-1.3.9.min.js'
 //= require 'moment-2.0.0/moment.js'
 //= require 'modernizr.js'
@@ -20,11 +21,15 @@
 //= require 'ember/ember.js'
 //= require 'ember-data/ember-data.js'
 //= require 'slider.js'
+//= require 'sinon.js'
+//= require 'jasmine-sinon.js'
 //= require 'foundation4/js/vendor/zepto.js'
 //= require 'foundation4/js/vendor/custom.modernizr.js'
 //= require 'foundation4/js/foundation.min.js'
 //= require 'foundation4/js/foundation/foundation.orbit.js'
-//= require 'tourmii.js'
+//= require 'leaflet'
+//= require 'mapbox'
+//= require 'wax.leaf.js'
 //= require 'search.js'
 //= require 'tour.js'
 //= require 'showtour.js'
@@ -34,5 +39,18 @@
 //= require_tree ./routes
 //= require_tree ./templates
 
+//= require 'models/tour.js'
+//= require 'models/step.js'
+//= require 'models/location.js'
+//= require 'models/user.js'
 
+
+//= require_tree ./templates
+//= require_tree ./classes
+//= require_tree ./models
+//= require_tree ./collections
+//= require_tree ./views
+//= require_tree ./routers
+
+//= require 'tourmii.js'
 

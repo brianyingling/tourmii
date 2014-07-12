@@ -1,19 +1,14 @@
-window.App = Ember.Application.create({
-  LOG_TRANSITIONS: true
-});
+$(function() {
 
-App.Router.map(function() {
-  this.route('home'),
-  this.resource('searches', function() {
-    this.route('new');
-  }),
-  this.resource('tours', function() {
-    this.route('new');
-    this.route('index');
-    this.route('show', {path: ':tour_id'});
-  });
-});
+// instantiate Router
+var tourmiiRouter = new TourmiiRouter();
 
-App.Store = DS.Store.extend({
-  revision: 12
+// needed for urls
+Backbone.history.start();
+
+
+// Initiate mainView once user logs in
+// var mainView = new MainView( {el:$('.container')} );
+// mainView.render().$el;
+
 });

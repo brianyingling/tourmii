@@ -1,12 +1,20 @@
-App.Step = DS.Model.extend({
-  name: DS.attr('string'),
-  description: DS.attr('string'),
-  address: DS.attr('string'),
-  lat: DS.attr('number'),
-  lng: DS.attr('number'),
-  reference: DS.attr('string'),
-  audiofile: DS.attr('string'),
-  position: DS.attr('string'),
-  tour_id: DS.attr('number'),
-  tour: DS.belongsTo('App.Tour'),
+var Step = Backbone.Model.extend({
+    defaults: {
+        name: String
+      , lat: Number
+      , lng: Number
+      , streetAddress: String
+      , city: String
+      , state: String
+      , images: Array
+      , recording: Object
+      , tour: Object
+    }
+  , url: function() {
+      console.log('step url...');
+      return this.isNew() ? '/steps' : '/steps/'+this.get('id');
+  }
+  , initialize: function() {
+      console.log("Step initialized");
+  }
 });

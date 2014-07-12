@@ -1,3 +1,3 @@
 class StepSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :address, :position
+  attributes :id, :name, :address, :lat, :lng, :reference, :is_complete
 end

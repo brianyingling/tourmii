@@ -6,6 +6,18 @@
   <link href='http://fonts.googleapis.com/css?family=Buenard' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
+  <!-- load authentication key for foursquare -->
+  <%= javascript_tag defer: 'defer' do %>
+  var config = {
+      foursquare: {
+        apiKey: "<%= ENV['FOURSQUARE_TUTORIAL_PUB'] %>",
+        authUrl: 'https://foursquare.com',
+        apiUrl: 'https://api.foursquare.com'
+      }
+   };
+  <% end %>
+  <!-- load js templates -->
+  <%= render :partial => 'shared/js-templates' %>
 
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_KEY']}&sensor=true" %>
@@ -13,9 +25,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <%= render :partial => 'shared/nav' %>
+  <div class="container">
+    <%= yield %>
+  </div>
 
 <%= yield content_for :modals %>
  <script>

@@ -1,5 +1,8 @@
 class TourSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description
+  attributes :id, :name
   has_many :steps
-  embed :ids, :include=>true
+
+  # use has_one instead of belongs_to -- JSON isn't
+  # concerned with ownership
+  has_one :user
 end

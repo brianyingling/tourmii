@@ -1,4 +1,6 @@
 class ToursController < ApplicationController
+  respond_to :json
+
   def index
    @tours = @auth.tours.all
    tours = @auth.tours.all
@@ -13,27 +15,13 @@ class ToursController < ApplicationController
     @tour = Tour.new
   end
   def create
-    @tour = Tour.new
-    (0...params[:tour].length).to_a.each do |num|
-      if num.to_s == '0'
-        @tour.name = params[:tour][num.to_s][:name]
-        @tour.description = params[:tour][num.to_s][:description]
-      else
-        step = Step.new
-        step.name = params[:tour][num.to_s][:name]
-        step.address = params[:tour][num.to_s][:address]
-        step.reference = params[:tour][num.to_s][:reference]
-        step.position = num
-        step.save
-        @tour.steps << step
-      end
-    end
+    @tour = Tour.create(params[:tour])
+    @tour.user = @auth
     @tour.save
-    @auth.tours << @tour
+    respond_with @tour
   end
   def show
-    @tour = Tour.find(params[:id])
-    @steps = @tour.steps
+    respond_with Tour.find(params[:id])
   end
 
   def purchase
@@ -45,6 +33,19 @@ class ToursController < ApplicationController
     Notifications.confirm_purchase(@auth, tour)
     @tours = @auth.tours
     @orders = @auth.orders
+  end
+
+  def update
+    @tour = Tour.find(params[:id])
+    @tour.update_attributes(params[:tour])
+    respond_with @tour
+  end
+
+  # written so that we don't have the name appearing as the root of the JSON
+  # Probably should move this to ApplicationController so that its for all
+  # controllers
+  def default_serializer_options
+    {root: false}
   end
 
 

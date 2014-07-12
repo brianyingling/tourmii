@@ -12,5 +12,8 @@
  *= require 'foundation.custom.min.css'
  *= require 'jquery_mobile/jquery-mobile-1.3.1.css'
  *= require 'slider.min.css'
+ *= require 'leaflet'
+ *= require 'leaflet.ie'
+ *= require 'mapbox'
  *= require 'tourmii'
  */
