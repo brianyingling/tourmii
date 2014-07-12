@@ -20,7 +20,7 @@ class HomeController < ApplicationController
 
   # Retrieves a json object of photos from Flickr
   def query_flickr(keyword)
-    url = "http://api.flickr.com/services/rest/?method=flickr.photos.search"
+    url = "https://api.flickr.com/services/rest/?method=flickr.photos.search"
     url += "&text=#{keyword}"
     url += "&api_key=" + ENV['FLICKR_TOURMII_API_KEY']
     url += "&format=json&nojsoncallback=1"
